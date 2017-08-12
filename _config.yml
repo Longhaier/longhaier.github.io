@@ -1,26 +1,28 @@
 permalink: /:year/:month/:day/:title.html
 paginate: 10
-markdown: redcarpet
-
+markdown: redcarpet2
+redcarpet:
+  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables",     "with_toc_data"]
+  
 # 作者信息
 author: 
-  name: Anya Lin
-  email: lay.1010@hotmail.com
-  link: http://painterlin.com
+  name: Longhaier
+  email: 1029418861@qq.com
+  link: http://longhaier.cn
   weibo: http://weibo.com/orangeissweet
-  github: http://github.com/lay1010
-  music: http://site.douban.com/linanya
+  github: https://github.com/Longhaier
+  douban: https://www.douban.com/people/82189768/
   linkedin: https://www.linkedin.com/pub/anya-lin/81/91/232
 
 # 站点信息
-title: 林安亚的博客
+title: Longhaier的博客
 description: My personal blog
-url: http://painterlin.com
+url: http://longhaier.cn
 rss_url: /pages/atom.xml
 
 # gavatar头像及Favicon
-gavatar: /public/img/deer3.png
-favicon: /public/img/deer3.png
+gavatar: /public/img/yellowdeer.jpg
+favicon: /public/img/yellowdeer.jpg
 
 # google analytics 设置
 ga:
