@@ -9,10 +9,10 @@ author:
   name: Longhaier
   email: 1029418861@qq.com
   link: http://longhaier.cn
-  weibo: http://weibo.com/orangeissweet
+  weibo: http://weibo.com/3281054762/profile?rightmod=1&wvr=6&mod=personinfo
   github: https://github.com/Longhaier
   douban: https://www.douban.com/people/82189768/
-  linkedin: https://www.linkedin.com/pub/anya-lin/81/91/232
+  linkedin: http://www.linkedin.com/in/%E6%B5%B7%E6%B6%9B-%E5%BC%A0-802019b5/
 
 # 站点信息
 title: Longhaier的博客
@@ -27,11 +27,11 @@ favicon: /public/img/yellowdeer.jpg
 # google analytics 设置
 ga:
   id: UA-54262064-1 
-  url: painterlin.com
+  url: longhaier.cn
 
 # disqus 设置
 disqus:
-  shortname: painterlin
+  shortname: longhaier
 
 # 主题设置，自动激活某个标签
 active: 读书
