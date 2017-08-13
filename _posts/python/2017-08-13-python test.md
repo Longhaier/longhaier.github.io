@@ -8,4 +8,4 @@ description:
 ---
 
 【测试】python 学习是一个美妙的过程》
-<img> scr ='http://oulmva2ba.bkt.clouddn.com/longhaier.jpg' <img>
+http://oulmva2ba.bkt.clouddn.com/longhaier.jpg
