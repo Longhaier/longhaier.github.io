@@ -19,8 +19,8 @@ url: http://longhaier.cn
 rss_url: /pages/atom.xml
 
 # gavatar头像及Favicon
-gavatar: /public/img/longhaier.png
-favicon: /public/img/longhaier.png
+gavatar: /public/img/picture.png
+favicon: /public/img/picture.png
 
 # google analytics 设置
 ga:
