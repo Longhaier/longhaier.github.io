@@ -1,8 +1,6 @@
 permalink: /:year/:month/:day/:title.html
 paginate: 10
-markdown: redcarpet2
-redcarpet:
-  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables",     "with_toc_data"]
+markdown: kramdown
   
 # 作者信息
 author: 
