@@ -41,7 +41,6 @@ active: 科技
 # 首页除了最新文章外显示分类
 cates: 
   - python
-  - linux
   - 科技
 
 # 中文本地化
