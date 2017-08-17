@@ -1,6 +1,9 @@
 permalink: /:year/:month/:day/:title.html
 paginate: 10
 markdown: kramdown
+kramdown:
+  input:  GFM
+  use_coderay: true
   
 # 作者信息
 author: 
@@ -33,12 +36,12 @@ disqus:
   shortname: longhaier
 
 # 主题设置，自动激活某个标签
-active: 读书
+active: 科技
 
 # 首页除了最新文章外显示分类
 cates: 
   - python
-  - linux
+  - 科技
 
 # 中文本地化
 locals:
