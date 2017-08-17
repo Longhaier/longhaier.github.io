@@ -36,7 +36,7 @@ disqus:
   shortname: longhaier
 
 # 主题设置，自动激活某个标签
-active: 读书
+active: 生活
 
 # 首页除了最新文章外显示分类
 cates: 
