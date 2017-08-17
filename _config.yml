@@ -17,6 +17,7 @@ title: Longhaier的博客
 description: My personal blog
 url: http://longhaier.cn
 rss_url: /pages/atom.xml
+baseurl: 
 
 # gavatar头像及Favicon
 gavatar: /public/img/picture.png
