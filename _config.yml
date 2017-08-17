@@ -36,12 +36,13 @@ disqus:
   shortname: longhaier
 
 # 主题设置，自动激活某个标签
-active: 生活
+active: 科技
 
 # 首页除了最新文章外显示分类
 cates: 
   - python
   - linux
+  - 科技
 
 # 中文本地化
 locals:
