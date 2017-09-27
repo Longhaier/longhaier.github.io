@@ -31,7 +31,7 @@
           {% for category in site.categories %} 
             <div class="tab-pane" id="{{ category[0] }}">
               <div class="list-group">
-                <!--<h2 class="center">{{ category[0] }}</h2>-->     <!--原来aside2上面的大标题-->
+                <!--<h2 class="center">{{ category[0] }}</h2>-->     <!--原来aside2上面的大标题,此处style 是后加-->
                 {% for post in category[1] %}
                   <a href="{{ post.url }}" class="list-group-item-lay pjaxlink" style="margin-left:10px" >{{post.title}}</a>
                 {% endfor %}
@@ -39,7 +39,8 @@
             </div>
           {% endfor %}      
           <div class="tab-pane" id="tags">
-            <div class="panel-group" id="accordion">
+            <!--此处我加了style-->
+            <div class="panel-group" id="accordion" style="margin-left:10px" >
               <!--<h2 class="center">{{ site.locals.tags }}</h2>-->
               {% for tag in site.tags %} 
                 <div class="panel panel-info">
