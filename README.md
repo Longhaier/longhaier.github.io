@@ -1,5 +1,5 @@
 individual blog
-webside: http://longhaier.cn
+webside: http://longhaier.github.io
 
 
 发博客示例
