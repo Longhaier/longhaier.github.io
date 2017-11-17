@@ -1,10 +1,25 @@
 permalink: /:year/:month/:day/:title.html
 paginate: 10
-markdown: kramdown
-kramdown:
-  input:  GFM
-  use_coderay: true
+
+
   
+markdown:       kramdown
+highlighter:    rouge
+kramdown:
+  input:                     GFM
+  auto_ids:                  true
+  footnote_nr:               1
+  entity_output:             as_char
+  toc_levels:                1..6
+  smart_quotes:              lsquo,rsquo,ldquo,rdquo
+  enable_coderay:            false
+  hard_wrap:                 false
+  syntax_highlighter:        rouge
+  transliterated_header_ids: true
+  footnote_backlink:         "&#8617;&#xfe0e;"
+ #use_coderay:               true
+
+
 # 作者信息
 author: 
   name: Longhaier
@@ -36,12 +51,13 @@ disqus:
   shortname: longhaier
 
 # 主题设置，自动激活某个标签
-active: 科技
+active: 编程
 
 # 首页除了最新文章外显示分类
 cates: 
-  - python
-  - 科技
+  - 编程
+  - 知识
+  - 体验
 
 # 中文本地化
 locals:
