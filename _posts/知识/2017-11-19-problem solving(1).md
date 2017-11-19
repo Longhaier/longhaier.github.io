@@ -2,7 +2,7 @@
 layout: post
 title:  解决问题的工具（overview）
 category: 知识
-tags: 8D
+tags: process
 keywords:
 description:
 ---
