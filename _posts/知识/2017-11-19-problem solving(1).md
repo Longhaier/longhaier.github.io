@@ -10,21 +10,21 @@ description:
 任职工艺工程师一年零五个月，从工作中还是学到了很多东西，最近想将工作一年半的知识进行整理，形成一个解决问题的思维。
 接下主要介绍一些分析工具：
 
-- 5why
-- 5W and 2H
-- Useful chart
+1. 5why
+2. 5W and 2H
+3. Useful chart
  - Fish bond chart
  - Flow chart
  - Pareto chart
  - Scatter plots
  - Histogram
-- Statistical process control
-- FMEA
-- 8D
-- DoE
-- Check sheet
-- Process map
-- 6 sigma
+4. Statistical process control
+5. FMEA
+6. 8D
+7. DoE
+8. Check sheet
+9. Process map
+10. 6 sigma
 
 
 这些我会分为很多文章来写，每天写一点，加深对这些工具的理解，同时也可以将这些记录下来，留给看到本文的人。
@@ -72,10 +72,10 @@ description:
 
 参考：
 
-[维基百科--5why](https://en.wikipedia.org/wiki/5_Whys)
-[快速探求问题本质的分析技术：为什么一为什么分析法.pdf](http://doc.mbalib.com/view/63049a1bb421c937ce983655c62621f3.html)
-[智库：为什么一为什么分析法](http://wiki.mbalib.com/wiki/5_WHY%E5%88%86%E6%9E%90)
-[5 WHY——探究问题根本原因的办法.ppt](http://doc.mbalib.com/view/6f47175d943d5a3a5ea3f6992917c6a5.html)
+[维基百科--5why](https://en.wikipedia.org/wiki/5_Whys). 
+[快速探求问题本质的分析技术：为什么一为什么分析法.pdf](http://doc.mbalib.com/view/63049a1bb421c937ce983655c62621f3.html). 
+[智库：为什么一为什么分析法](http://wiki.mbalib.com/wiki/5_WHY%E5%88%86%E6%9E%90). 
+[5 WHY——探究问题根本原因的办法.ppt](http://doc.mbalib.com/view/6f47175d943d5a3a5ea3f6992917c6a5.html). 
 
 
 
