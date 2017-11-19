@@ -29,7 +29,7 @@ description:
 
 这些我会分为很多文章来写，每天写一点，加深对这些工具的理解，同时也可以将这些记录下来，留给看到本文的人。
 
---
+***
 # 5why
 
 ### 5why是什么？
@@ -72,10 +72,10 @@ description:
 
 参考：
 
-[维基百科--5why](https://en.wikipedia.org/wiki/5_Whys). 
-[快速探求问题本质的分析技术：为什么一为什么分析法.pdf](http://doc.mbalib.com/view/63049a1bb421c937ce983655c62621f3.html). 
-[智库：为什么一为什么分析法](http://wiki.mbalib.com/wiki/5_WHY%E5%88%86%E6%9E%90). 
-[5 WHY——探究问题根本原因的办法.ppt](http://doc.mbalib.com/view/6f47175d943d5a3a5ea3f6992917c6a5.html). 
+1. [维基百科--5why](https://en.wikipedia.org/wiki/5_Whys). 
+2. [快速探求问题本质的分析技术：为什么一为什么分析法.pdf](http://doc.mbalib.com/view/63049a1bb421c937ce983655c62621f3.html). 
+3. [智库：为什么一为什么分析法](http://wiki.mbalib.com/wiki/5_WHY%E5%88%86%E6%9E%90). 
+4. [5 WHY——探究问题根本原因的办法.ppt](http://doc.mbalib.com/view/6f47175d943d5a3a5ea3f6992917c6a5.html). 
 
 
 
