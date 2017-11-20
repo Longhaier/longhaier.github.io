@@ -11,20 +11,19 @@ description:
 接下主要介绍一些分析工具：
 
 1. 5why
-2. 5W and 2H
-3. Useful chart
+2. FMEA
+3. 8D
+4. Useful chart
  - Fish bond chart
  - Flow chart
  - Pareto chart
  - Scatter plots
  - Histogram
-4. Statistical process control
-5. FMEA
-6. 8D
-7. DoE
-8. Check sheet
-9. Process map
-10. 6 sigma
+5. Statistical process control
+6. DoE
+7. Check sheet
+8. Process map
+9. 6 sigma
 
 
 这些我会分为很多文章来写，每天写一点，加深对这些工具的理解，同时也可以将这些记录下来，留给看到本文的人。
