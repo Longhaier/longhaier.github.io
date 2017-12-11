@@ -1,15 +1,10 @@
-individual blog
+welcome to my blog!
+
 webside: http://longhaier.github.io
 
+This site is used to record my life and share what I think.
+I'm glad you can leave a comment about webside or article.
 
-发博客示例
----
-layout: post
-title: 一只猫
-category: 绘画
-tags: 
-keywords: 
-description: 
----
+
 
 
