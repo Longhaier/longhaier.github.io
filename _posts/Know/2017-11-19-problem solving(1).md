@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  解决问题的工具（overview）
-category: Knowledge
+category: Know
 tags: process
 keywords:
 description:

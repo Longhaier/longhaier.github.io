@@ -1,7 +1,7 @@
 ---
 layout: page_title
 title: <i class="fa fa-home fa-lg"></i>
-titlename: 首页
+titlename: Index
 ---
 <!--<br>--> 
 
@@ -17,7 +17,7 @@ titlename: 首页
       {% for post in paginator.posts %}
         <a  href='{{ post.url }}' class="list-group-item pjaxlink clearfix">
           {{post.title}}
-          <span class="badge">{{ post.date | date:"%Y年%m月%d日" }}</span>
+          <span class="badge">{{ post.date | date:"%Y-%m-%d" }}</span>
         </a>
       {% endfor %}
     </div>
@@ -31,7 +31,7 @@ titlename: 首页
             {% for post in tag[1] %}
               <a  href='{{ post.url }}' class="list-group-item pjaxlink clearfix">
                 {{post.title}}
-                <span class="badge">{{ post.date | date:"%Y年%m月%d日" }}</span>
+                <span class="badge">{{ post.date | date:"%Y-%m-%d" }}</span>
               </a>
             {% endfor %}
           {% endif %}
