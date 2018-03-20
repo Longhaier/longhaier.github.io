@@ -51,17 +51,17 @@ disqus:
   shortname: Joe
 
 # 主题设置，自动激活某个标签
-active: Comp
+active: 编程
 
 # 首页除了最新文章外显示分类
 cates: 
-  - Comp
-  - Know
-  - Exper
+  - 编程
+  - 知识
+  - 体验
 
 # 中文本地化
 locals:
-  tags: Tags
-  about: About
-  newest: Newest
-  archive: Arch
+  tags: 标签
+  about: 关于
+  newest: 最近
+  archive: 存档
