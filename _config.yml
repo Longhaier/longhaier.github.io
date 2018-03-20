@@ -22,7 +22,7 @@ kramdown:
 
 # 作者信息
 author: 
-  name: Longhaier
+  name: Joe
   email: 1029418861@qq.com
   link: http://longhaier.cn
   weibo: http://weibo.com/3281054762/profile?rightmod=1&wvr=6&mod=personinfo
@@ -31,7 +31,7 @@ author:
   linkedin: http://www.linkedin.com/in/%E6%B5%B7%E6%B6%9B-%E5%BC%A0-802019b5/
 
 # 站点信息
-title: Longhaier的博客
+title: Joe's blog
 description: My personal blog
 url: http://longhaier.cn
 rss_url: /pages/atom.xml
@@ -48,20 +48,20 @@ ga:
 
 # disqus 设置
 disqus:
-  shortname: longhaier
+  shortname: Joe
 
 # 主题设置，自动激活某个标签
-active: 编程
+active: CS
 
 # 首页除了最新文章外显示分类
 cates: 
-  - 编程
-  - 知识
-  - 体验
+  - CS
+  - Knowledge
+  - Experience
 
 # 中文本地化
 locals:
-  tags: 标签
-  about: 关于
-  newest: 最新文章
-  archive: 归档
+  tags: tags
+  about: about
+  newest: newest
+  archive: archive
