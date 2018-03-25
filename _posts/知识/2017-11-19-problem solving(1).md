@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  解决问题的工具(一)
-category: 工具
+category: 知识
 tags: process
 keywords:
 description:
