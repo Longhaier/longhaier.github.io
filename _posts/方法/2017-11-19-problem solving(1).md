@@ -1,13 +1,13 @@
 ---
 layout: post
 title:  解决问题的工具(一)
-category: 知识
+category: 方法
 tags: process
 keywords:
 description:
 ---
 
-任职工艺工程师一年零五个月，从工作中还是学到了很多东西，最近想将工作一年半的知识进行整理，形成一个解决问题的思维。
+最近想将工作一年半的知识进行整理，形成一个解决问题的思维。
 接下主要介绍一些分析工具：
 
 1. 5why
