@@ -1,10 +1,11 @@
-welcome to my blog!
+Hi dear friend :)
 
-webside: http://longhaier.github.io
+Webside: http://longhaier.github.io is my online blog, aim to keep the note of my learning and thinking.
+Sometimes i will write some informal essay to describe the current life status.
 
-This site is used to record my life and share my thinking.
+I'm glad you can leave a comment about webside or article, if you have any concern, can send me by e-mail via 1029418861@qq.com
 
-I'm glad you can leave a comment about webside or article.
+Thank you!
 
 
 
