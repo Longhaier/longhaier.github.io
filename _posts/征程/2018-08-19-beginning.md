@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  征程起点
-category:征程
+category: 征程
 tags: 
 keywords:
 description:
