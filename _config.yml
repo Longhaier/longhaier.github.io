@@ -12,12 +12,12 @@ kramdown:
   entity_output:             as_char
   toc_levels:                1..6
   smart_quotes:              lsquo,rsquo,ldquo,rdquo
-  enable_coderay:            false
-  hard_wrap:                 false
+  enable_coderay:            true
+  hard_wrap:                 true
   syntax_highlighter:        rouge
   transliterated_header_ids: true
   footnote_backlink:         "&#8617;&#xfe0e;"
- #use_coderay:               true
+
 
 
 # 作者信息
@@ -65,3 +65,5 @@ locals:
   about: 关于
   newest: 最近
   archive: 存档
+
+theme: jekyll-theme-cayman
