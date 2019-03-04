@@ -32,7 +32,7 @@ later
 
 ## 友情链接
 
-[Gaohaoyang，Blogger模板来源](http://gaohaoyang.github.io/) \| [阮一峰](http://www.ruanyifeng.com/blog/)
+[孤傲苍狼](https://www.cnblogs.com/xdp-gacl/) \| [阮一峰](http://www.ruanyifeng.com/blog/)
 
 ## Comments
 
