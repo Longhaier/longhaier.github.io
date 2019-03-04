@@ -2,8 +2,10 @@
 layout: post
 title:  "解决问题的工具(一)"
 date:   2017-11-19 15:14:54
-categories: method
-tags: method process
+categories: Method
+tags: Method Process
+author: Longhaier
+mathjax: false
 ---
 
 * content
