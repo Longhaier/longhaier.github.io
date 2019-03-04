@@ -1,23 +1,5 @@
 ---
 layout: post
-title:  "Jekyll 搭建静态博客"
-date:   2015-02-15 22:14:54
-categories: jekyll
-tags: jekyll RubyGems
----
-
-* content
-{:toc}
-
-一直以来都想搭建一个自己的博客，但是近半年做项目太忙，再加上教研室的网络很坑爹，所以也一直没顾得上。之前用过 WordPress 托管在免费的京东云擎上，但是速度太慢。在知乎上看到一些相关的内容，于是选择了在github上用jekyll搭建博客。
-
-
-
-
-
-## 搭建过程
----
-layout: post
 title:  "解决问题的工具(一)"
 date:   2017-11-19 15:14:54
 categories: Method
@@ -50,7 +32,6 @@ mathjax: false
 7. Check sheet
 8. Process map
 9. 6 sigma
-
 
 这些我会分为很多文章来写，每天写一点，加深对这些工具的理解，同时也可以将这些记录下来，留给看到本文的人。
 
