@@ -6,11 +6,11 @@ icon: heart
 type: page
 ---
 
-## 你好，我是 Longhaier
+## 你好，我是 TaoBuilds
 
 喜欢技术，也喜欢把想法真正做出来。
 
-我关注工程实践、软件工具、AI 应用和效率提升。这里既有早期的 Java 学习笔记，也有一路走来的观察与思考。内容不追求面面俱到，只记录值得沉淀的东西。
+我关注工程实践、AI 工具实测、自动化应用、小产品开发和效率提升。这里既有早期的 Java 学习笔记，也有一路走来的观察与思考。内容不追求面面俱到，只记录值得沉淀的东西。
 
 ## 你能在这里找到什么
 
@@ -20,7 +20,7 @@ type: page
 
 ## 联系方式
 
-- GitHub：[Longhaier](https://github.com/Longhaier)
+- GitHub：[TaoBuilds](https://github.com/{{ site.github_username }})
 - Email：[{{ site.email }}](mailto:{{ site.email }})
 
 持续更新中。

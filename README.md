@@ -1,8 +1,10 @@
-# Longhaier · Personal Blog
+# TaoBuilds · Personal Blog
 
 Personal blog built with **Jekyll** and published on **GitHub Pages**.
 
-Website: https://longhaier.github.io/
+Website (current URL until GitHub account/repository rename): https://longhaier.github.io/
+
+Target URL after the manual GitHub rename: https://taobuilds.github.io/
 
 ## Sections
 - `/`: modern, responsive homepage
