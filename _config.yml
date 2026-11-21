@@ -11,14 +11,14 @@ description: TaoBuilds，记录 AI 工具实测、自动化、工程实践与小
 title: TaoBuilds
 brief-intro: AI · 自动化 · 工程实践
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://longhaier.github.io" # the base hostname & protocol for your site
+url: "https://taobuilds.github.io" # the base hostname & protocol for your site
 
 permalink: /:year/:month/:day/:title/
 
 # other links
 twitter_username: Tao_Builds
 facebook_username: Longhaier1993
-github_username:  Longhaier
+github_username: TaoBuilds
 email: 1029418861@qq.com
 weibo_username: Longhaier_21300
 zhihu_username: Longhaier
@@ -41,8 +41,8 @@ gitalk:
   clientID: ""
   clientSecret: ""
   repo: blog-comments    #仓库名称
-  owner: Longhaier    #github用户名
-  admin: Longhaier
+  owner: TaoBuilds    # used only if Gitalk is securely re-enabled
+  admin: TaoBuilds
   distractionFreeMode: true
 
 # statistic analysis 统计代码

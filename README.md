@@ -2,9 +2,7 @@
 
 Personal blog built with **Jekyll** and published on **GitHub Pages**.
 
-Website (current URL until GitHub account/repository rename): https://longhaier.github.io/
-
-Target URL after the manual GitHub rename: https://taobuilds.github.io/
+Website: https://taobuilds.github.io/
 
 ## Sections
 - `/`: modern, responsive homepage
@@ -17,7 +15,7 @@ Target URL after the manual GitHub rename: https://taobuilds.github.io/
 - Jekyll + Liquid templates
 - Sass (source in `_sass/`, entry point `css/main.scss`)
 - Vanilla JavaScript in `js/main.js`
-- GitHub Pages (default branch: `master`)
+- GitHub Pages (default branch: `master`, user repository: `TaoBuilds/TaoBuilds.github.io`)
 
 ## Local preview
 Install Jekyll and the `jekyll-paginate` plugin in a compatible Ruby environment, then run:
