@@ -260,3 +260,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid #58a6f6; outline-offs
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
+
+/* Keyboard-accessible skip link for every page. */
+.skip-link { position: absolute; left: 16px; top: -100px; z-index: 1000; background: white; color: #0b3e70; padding: 12px 16px; border-radius: 8px; font-size: 14px; font-weight: 700; box-shadow: 0 3px 20px rgba(0,0,0,.15); }
+.skip-link:focus { top: 10px; }
