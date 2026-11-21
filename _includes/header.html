@@ -8,6 +8,7 @@
     <nav id="headerNav" class="site-nav" aria-label="主导航">
       <ul class="site-nav__list">
         <li><a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>首页</a></li>
+        <li><a href="{{ '/#projects' | relative_url }}">项目</a></li>
         <li><a href="{{ '/archive/' | relative_url }}"{% if page.url == '/archive/' %} aria-current="page"{% endif %}>归档</a></li>
         <li><a href="{{ '/category/' | relative_url }}"{% if page.url == '/category/' %} aria-current="page"{% endif %}>分类</a></li>
         <li><a href="{{ '/tag/' | relative_url }}"{% if page.url == '/tag/' %} aria-current="page"{% endif %}>标签</a></li>
