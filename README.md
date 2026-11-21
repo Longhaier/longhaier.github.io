@@ -1,13 +1,32 @@
-Hi dear friend :)
+# Longhaier · Personal Blog
 
-Webside: http://longhaier.github.io is my online blog, aim to keep the note of my learning and thinking.
-Sometimes i will write some informal essay to describe the current life status.
+Personal blog built with **Jekyll** and published on **GitHub Pages**.
 
-I'm glad you can leave a comment about webside or article, if you have any concern, can send me by e-mail via 1029418861@qq.com
-ther is a sentence i would link to share wth you:  
+Website: https://longhaier.github.io/
 
-Thank you!
+## Sections
+- `/`: modern, responsive homepage
+- `/archive/`: posts by date
+- `/category/`: post categories
+- `/tag/`: tags
+- `/about/`: about
 
+## Tech
+- Jekyll + Liquid templates
+- Sass (source in `_sass/`, entry point `css/main.scss`)
+- Vanilla JavaScript in `js/main.js`
+- GitHub Pages (default branch: `master`)
 
+## Local preview
+Install Jekyll and the `jekyll-paginate` plugin in a compatible Ruby environment, then run:
 
+```sh
+jekyll serve
+```
 
+Visit `http://localhost:4000`. GitHub Pages builds the site from the repository.
+
+## Security
+Do not commit OAuth client secrets, tokens, or API keys.
+Gitalk is disabled until its authorization flow has been replaced or securely reconfigured.
+Any OAuth client secret previously committed to this public repository **must be revoked/rotated**; deleting it from the latest file does not erase Git history.

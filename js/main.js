@@ -1,57 +1,43 @@
-/**
- * some JavaScript code for this blog theme
- */
-/* jshint asi:true */
+(function () {
+  'use strict';
+  var menu = document.getElementById('headerMenu');
+  var nav = document.getElementById('headerNav');
 
-/////////////////////////header////////////////////////////
-/**
- * clickMenu
- */
-(function() {
-  if (window.innerWidth <= 770) {
-    var menuBtn = document.querySelector('#headerMenu')
-    var nav = document.querySelector('#headerNav')
-    menuBtn.onclick = function(e) {
-      e.stopPropagation()
-      if (menuBtn.classList.contains('active')) {
-        menuBtn.classList.remove('active')
-        nav.classList.remove('nav-show')
-      } else {
-        nav.classList.add('nav-show')
-        menuBtn.classList.add('active')
-      }
+  if (menu && nav) {
+    function setMenu(open) {
+      nav.classList.toggle('is-open', open);
+      menu.setAttribute('aria-expanded', String(open));
+      menu.setAttribute('aria-label', open ? '关闭导航菜单' : '打开导航菜单');
     }
-    document.querySelector('body').addEventListener('click', function() {
-      nav.classList.remove('nav-show')
-      menuBtn.classList.remove('active')
-    })
+    menu.addEventListener('click', function (event) {
+      event.stopPropagation();
+      setMenu(menu.getAttribute('aria-expanded') !== 'true');
+    });
+    nav.addEventListener('click', function (event) {
+      if (event.target.closest('a')) setMenu(false);
+    });
+    document.addEventListener('click', function (event) {
+      if (!nav.contains(event.target) && event.target !== menu) setMenu(false);
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') { setMenu(false); menu.focus(); }
+    });
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 800) setMenu(false);
+    });
   }
-}());
 
-//////////////////////////back to top////////////////////////////
-(function() {
-  var backToTop = document.querySelector('.back-to-top')
-  var backToTopA = document.querySelector('.back-to-top a')
-  // console.log(backToTop);
-  window.addEventListener('scroll', function() {
-
-    // 页面顶部滚进去的距离
-    var scrollTop = Math.max(document.documentElement.scrollTop, document.body.scrollTop)
-
-    if (scrollTop > 200) {
-      backToTop.classList.add('back-to-top-show')
-    } else {
-      backToTop.classList.remove('back-to-top-show')
+  var backToTop = document.querySelector('.back-to-top');
+  if (backToTop) {
+    function toggleBackToTop() {
+      var top = window.pageYOffset || document.documentElement.scrollTop || 0;
+      backToTop.classList.toggle('back-to-top-show', top > 260);
     }
-  })
+    window.addEventListener('scroll', toggleBackToTop, { passive: true });
+    toggleBackToTop();
+  }
 
-  // backToTopA.addEventListener('click',function (e) {
-  //     e.preventDefault()
-  //     window.scrollTo(0,0)
-  // })
-}());
-
-//////////////////////////hover on demo//////////////////////////////
-(function() {
-  var demoItems = document.querySelectorAll('.grid-item')
+  if (window.smoothScroll && typeof window.smoothScroll.init === 'function') {
+    window.smoothScroll.init({ speed: 450, easing: 'easeInOutCubic', offset: 20 });
+  }
 }());

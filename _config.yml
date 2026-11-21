@@ -5,9 +5,11 @@
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # 'jekyll serve'. If you change this file, please restart the server process.
 
+description: 记录技术学习、工程实践、工具探索与持续思考
+
 # Site settings
-title: JoeZhang
-brief-intro: Java learner
+title: Longhaier
+brief-intro: 技术 · 工程 · 思考
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://longhaier.github.io" # the base hostname & protocol for your site
 
@@ -23,7 +25,7 @@ zhihu_username: Longhaier
 linkedIn_username:
 dribbble_username:
 
-description_footer: 本站记录我JAVA之旅 
+description_footer: 记录技术、工程、工具与生活的持续探索
 
 
 
@@ -34,10 +36,10 @@ duoshuo_shortname: #JoeZhang
 disqus_shortname: #JoeZhang
 
 # Gitalk
-gitalk: 
-  enable: true    #用来做启用判断可以不用
-  clientID: 295d2f1863de3457940d
-  clientSecret: 311ef3a962f552cf26988cad5eb8719052a381a6
+gitalk:
+  enable: false    # Temporarily disabled: public OAuth secret must be revoked
+  clientID: ""
+  clientSecret: ""
   repo: blog-comments    #仓库名称
   owner: Longhaier    #github用户名
   admin: Longhaier
