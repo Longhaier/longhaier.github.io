@@ -7,6 +7,7 @@ on:
       - '**/*.md'
       - '**/*.scss'
       - 'js/**'
+      - 'scripts/**'
       - '_config.yml'
       - '.github/workflows/site-build.yml'
   push:
@@ -17,7 +18,7 @@ permissions:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -34,3 +35,26 @@ jobs:
           test -f _site/tag/index.html
           test -f _site/about/index.html
           test -f _site/collection/index.html
+          test -s _site/css/main.css
+      - name: Setup browser test runtime
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Chromium for responsive regression
+        run: |
+          npm install --no-save --no-package-lock playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Exercise mobile and desktop layouts (offline external assets)
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 --directory _site &
+          server_pid=$!
+          trap 'kill $server_pid 2>/dev/null || true' EXIT
+          node scripts/layout-smoke.cjs
+      - name: Upload visual snapshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: responsive-snapshots
+          path: test-artifacts/
+          if-no-files-found: ignore
+          retention-days: 5

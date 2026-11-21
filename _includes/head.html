@@ -10,9 +10,28 @@
   <meta property="og:description" content="{{ page.description | default: site.description | escape }}">
   <meta property="og:url" content="{{ page.url | absolute_url }}">
   <link rel="shortcut icon" href="{{ '/favicon.ico' | relative_url }}" type="image/x-icon">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://at.alicdn.com/t/font_8v3czwksspqlg14i.css">
-  <link rel="stylesheet" href="{{ '/css/main.css' | relative_url }}">
+  <!-- Same-origin stylesheet only: external font icon CSS was render-blocking on some networks. -->
+  <!-- The small fallback keeps content usable if a cached/bad connection delays the CSS. -->
+  <style>
+    *,*::before,*::after{box-sizing:border-box}
+    html{max-width:100%;overflow-x:clip}
+    body{margin:0;max-width:100%;overflow-wrap:anywhere;background:#f6f8fb;font-family:system-ui,-apple-system,"Microsoft YaHei",sans-serif}
+    .site-header__inner,.home-container,.interior-container,.site-footer__inner{max-width:1160px;width:calc(100% - 36px);margin-inline:auto}
+    .site-header__inner{display:flex;align-items:center;gap:18px;min-height:66px}
+    .site-brand{flex-shrink:0}
+    img,video,svg,iframe{max-width:100%;height:auto}
+    pre{max-width:100%;overflow-x:auto}
+    .site-mobile-nav{display:none;position:relative}
+    .site-mobile-nav__panel{position:absolute;right:0;top:100%;width:min(260px,calc(100vw - 32px));background:#fff;padding:8px;z-index:110;box-shadow:0 12px 24px rgba(0,0,0,.15)}
+    .site-mobile-nav__panel ul{list-style:none;margin:0;padding:0}
+    .site-mobile-nav__panel a{display:block;padding:9px 12px}
+    @media(max-width:980px){
+      .site-nav{display:none}
+      .site-mobile-nav{display:block;margin-left:auto}
+      .home-hero__content,.interior-layout{display:block}
+    }
+  </style>
+  <link rel="stylesheet" href="{{ '/css/main.css' | relative_url }}?v={{ site.github.build_revision | default: '20261121-responsive' }}">
   <link rel="canonical" href="{{ page.url | absolute_url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ '/feed.xml' | absolute_url }}">
   {% if site.baidu_tongji_id %}

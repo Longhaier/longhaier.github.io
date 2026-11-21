@@ -1,0 +1,100 @@
+/* Cross-browser and cross-network resilience layer. This is intentionally
+   loaded last, after the old CSS has been removed from the Sass entry point. */
+*, *::before, *::after { box-sizing: border-box; }
+html { max-width: 100%; scroll-padding-top: 24px; }
+body { width: 100%; min-width: 0; max-width: 100%; }
+.site-header__inner, .home-container, .interior-container, .site-footer__inner {
+  width: calc(100% - 48px);
+  max-width: 1160px;
+}
+main, article, section, nav, header, footer, aside, div, .home-hero__copy, .home-post,
+.interior-preview, .home-project { min-width: 0; }
+.home-hero__visual { min-width: 0; }
+.home-hero__content > *, .interior-layout > *, .home-post-grid > *,
+.home-discover__grid > * { min-width: 0; }
+img, video, canvas, svg, iframe { max-width: 100%; height: auto; }
+img { object-fit: contain; }
+iframe { width: 100%; }
+a, h1, h2, h3, h4, h5, h6, p, li { overflow-wrap: anywhere; }
+table { max-width: 100%; }
+.interior-prose .highlighter-rouge, .interior-prose .highlight,
+.interior-prose figure, .interior-prose pre, .interior-prose table {
+  max-width: 100%; overflow-x: auto;
+}
+.interior-prose pre, .interior-prose pre code {
+  white-space: pre; overflow-wrap: normal; word-break: normal;
+}
+.interior-prose .highlighter-rouge .highlight { overflow-x: auto; }
+.interior-prose .highlighter-rouge pre { margin: 0; }
+.interior-prose table { width: max-content; max-width: 100%; }
+.home-window__body { overflow-x: auto; }
+.home-hero__visual { padding: 22px 8px 17px; }
+.home-floating-chip--top { right: 0; }
+.home-floating-chip--bottom { left: 0; }
+/* Native mobile navigation: functional if the /js/main.js request fails. */
+.site-mobile-nav { display: none; margin-left: auto; position: relative; z-index: 120; }
+.site-mobile-nav > summary {
+  list-style: none; display: flex; align-items: center; justify-content: center; gap: 7px;
+  min-height: 42px; min-width: 80px; padding: 8px 11px; cursor: pointer;
+  color: #193853; background: #fff; border: 1px solid #dee7f0; border-radius: 10px;
+  font-size: 14px; line-height: 1.35; font-weight: 700; -webkit-tap-highlight-color: transparent;
+}
+.site-mobile-nav > summary::-webkit-details-marker { display: none; }
+.site-mobile-nav > summary span:first-child { font-size: 19px; line-height: 1; }
+.site-mobile-nav > summary:focus-visible { outline: 3px solid #58a6f6; outline-offset: 3px; }
+.site-mobile-nav[open] > summary { background: #ecf5fd; border-color: #b5d8ed; }
+.site-mobile-nav__panel {
+  position: absolute; right: 0; top: calc(100% + 10px);
+  width: min(290px, calc(100vw - 36px)); max-height: calc(100dvh - 100px);
+  overflow-y: auto; background: #fff; border: 1px solid #dce6f0; border-radius: 14px;
+  padding: 8px; box-shadow: 0 16px 40px rgba(11,38,70,.18);
+}
+.site-mobile-nav__panel ul { padding: 0; margin: 0; list-style: none; }
+.site-mobile-nav__panel li { list-style: none; }
+.site-mobile-nav__panel a {
+  display: block; padding: 12px 15px; color: #324963; font-size: 14px;
+  border-radius: 9px; line-height: 1.45; font-weight: 650;
+}
+.site-mobile-nav__panel a:hover, .site-mobile-nav__panel a[aria-current="page"] {
+  background: #eaf3fc; color: #155f9a;
+}
+@media (max-width: 980px) {
+  .site-header { min-height: 66px; }
+  .site-header__inner { min-height: 66px; width: calc(100% - 36px); gap: 12px; }
+  .site-nav { display: none !important; }
+  .site-mobile-nav { display: block; }
+  .site-menu-toggle { display: none !important; }
+  .home-container, .interior-container, .site-footer__inner { width: calc(100% - 36px); }
+  .home-hero__content { grid-template-columns: 1fr; gap: 50px; }
+  .interior-layout { grid-template-columns: 1fr; gap: 25px; }
+  .interior-aside { position: static; }
+  .interior-preview-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 620px) {
+  .site-brand { font-size: 18px; letter-spacing: -.7px; }
+  .site-brand__mark { width: 32px; height: 32px; }
+  .home-container, .interior-container, .site-footer__inner { width: calc(100% - 32px); }
+  .home-hero__content { padding-top: 50px; padding-bottom: 55px; }
+  .home-hero__visual { width: 100%; padding: 18px 2px 16px; }
+  .home-window { transform: none; }
+  .home-floating-chip { display: none; }
+  .home-window__body { font-size: clamp(8px, 2.5vw, 11px); }
+  .home-post-grid, .home-discover__grid, .home-project-grid, .interior-preview-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .interior-toolbar { flex-direction: column; align-items: stretch; }
+  .interior-search { width: 100%; }
+  .interior-article { padding: 25px 18px; }
+  .interior-prose pre { font-size: 12px; }
+  .interior-post-nav, .interior-related__grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 360px) {
+  .site-brand { font-size: 16px; }
+  .site-header__inner { width: calc(100% - 24px); gap: 8px; }
+  .site-mobile-nav > summary { min-width: 72px; }
+  .interior-hero h1 { font-size: 30px; }
+  .interior-article { padding: 22px 14px; }
+}
+@media (hover: none) {
+  .interior-preview:hover, .home-post:hover, .home-project:hover { transform: none; }
+}

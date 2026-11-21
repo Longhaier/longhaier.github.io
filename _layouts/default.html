@@ -7,7 +7,6 @@
     {{ content }}
     {% include footer.html %}
     {% include backToTop.html %}
-    <script src="{{ '/js/main.js' | relative_url }}" defer></script>
-    <script src="{{ '/js/smooth-scroll.min.js' | relative_url }}" defer></script>
+    <script src="{{ '/js/main.js' | relative_url }}?v={{ site.github.build_revision | default: '20261121-responsive' }}" defer></script>
   </body>
 </html>
