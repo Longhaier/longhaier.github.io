@@ -34,11 +34,6 @@ type: page
 
 [查看 GitHub 项目](https://github.com/TaoBuilds/smartfacility.tech)
 
-### MEM 练题站 · 在职学习工具
-
-围绕管理类联考和英语二的练习、错题复盘和知识点整理做的小工具。
-
-[查看 GitHub 项目](https://github.com/TaoBuilds/factoryenergy.site)
 
 ## 联系与交流
 
