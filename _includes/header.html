@@ -4,7 +4,6 @@
       <span class="site-brand__mark" aria-hidden="true">T</span>
       <span>TaoBuilds<span class="site-brand__dot">.</span></span>
     </a>
-    <button id="headerMenu" class="site-menu-toggle" type="button" aria-label="打开导航菜单" aria-expanded="false" aria-controls="headerNav">☰</button>
     <nav id="headerNav" class="site-nav" aria-label="主导航">
       <ul class="site-nav__list">
         <li><a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>首页</a></li>
@@ -16,5 +15,19 @@
         <li><a class="site-nav__github" href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
       </ul>
     </nav>
+    <details class="site-mobile-nav">
+      <summary aria-label="打开或关闭网站导航"><span aria-hidden="true">☰</span><span>菜单</span></summary>
+      <nav aria-label="移动端导航" class="site-mobile-nav__panel">
+        <ul>
+          <li><a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>首页</a></li>
+          <li><a href="{{ '/archive/' | relative_url }}"{% if page.url == '/archive/' %} aria-current="page"{% endif %}>归档</a></li>
+          <li><a href="{{ '/category/' | relative_url }}"{% if page.url == '/category/' %} aria-current="page"{% endif %}>分类</a></li>
+          <li><a href="{{ '/tag/' | relative_url }}"{% if page.url == '/tag/' %} aria-current="page"{% endif %}>标签</a></li>
+          <li><a href="{{ '/collection/' | relative_url }}"{% if page.url == '/collection/' %} aria-current="page"{% endif %}>收藏</a></li>
+          <li><a href="{{ '/about/' | relative_url }}"{% if page.url == '/about/' %} aria-current="page"{% endif %}>关于</a></li>
+          <li><a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
+        </ul>
+      </nav>
+    </details>
   </div>
 </header>
