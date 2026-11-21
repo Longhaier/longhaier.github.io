@@ -1,0 +1,36 @@
+name: Validate Jekyll site
+
+on:
+  pull_request:
+    paths:
+      - '**/*.html'
+      - '**/*.md'
+      - '**/*.scss'
+      - 'js/**'
+      - '_config.yml'
+      - '.github/workflows/site-build.yml'
+  push:
+    branches: [master]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Build with GitHub Pages Jekyll
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+      - name: Check required output pages
+        run: |
+          test -f _site/index.html
+          test -f _site/archive/index.html
+          test -f _site/category/index.html
+          test -f _site/tag/index.html
+          test -f _site/about/index.html
+          test -f _site/collection/index.html
