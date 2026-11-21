@@ -1,0 +1,12 @@
+{% assign entry = include.post %}
+<article class="interior-preview" data-filter-item data-search="{{ entry.title | downcase | escape }} {{ entry.categories | join: ' ' | downcase | escape }} {{ entry.tags | join: ' ' | downcase | escape }}">
+  <div class="interior-preview__meta">
+    <time datetime="{{ entry.date | date: '%Y-%m-%d' }}">{{ entry.date | date: '%Y.%m.%d' }}</time>
+    {% for category in entry.categories limit:2 %}
+      <a class="interior-chip" href="{{ '/category/' | relative_url }}#{{ category | slugify }}">{{ category | escape }}</a>
+    {% endfor %}
+  </div>
+  <h3><a href="{{ entry.url | relative_url }}">{{ entry.title | escape }}</a></h3>
+  <p>{{ entry.excerpt | strip_html | strip_newlines | truncate: 130 | escape }}</p>
+  <a class="interior-preview__more" href="{{ entry.url | relative_url }}" aria-label="阅读文章：{{ entry.title | escape }}">阅读全文 <span aria-hidden="true">↗</span></a>
+</article>
