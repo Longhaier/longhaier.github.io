@@ -1,15 +1,14 @@
 ---
 layout: page
-title: Collections
+title: 资源收藏
 permalink: /collection/
 icon: bookmark
 type: page
 ---
 
-* content
-{:toc}
+这是一份长期积累的技术工具与学习资源清单。部分旧链接可能已失效或发生变化，使用前请核对来源与安全性。
 
-## Windows软件
+## Windows 软件
 * [安全:火绒安全](https://www.huorong.cn/prod.html)
 	相比360国内版，360国际版有很大优势，使用个人免费版本就够了
 * [桌面:dexpot](https://www.dexpot.de/)
@@ -79,6 +78,4 @@ type: page
 
 
 
-## Comments
 
-{% include comments.html %}

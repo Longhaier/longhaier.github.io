@@ -1,0 +1,12 @@
+<section class="interior-hero" aria-labelledby="interior-title">
+  <div class="interior-container">
+    <nav class="interior-breadcrumb" aria-label="面包屑导航">
+      <a href="{{ '/' | relative_url }}">首页</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">{{ include.title | default: page.title | escape }}</span>
+    </nav>
+    <p class="interior-hero__eyebrow">{{ include.eyebrow | default: 'TAOBUILDS / EXPLORE' }}</p>
+    <h1 id="interior-title">{{ include.title | default: page.title | escape }}<span aria-hidden="true">.</span></h1>
+    {% if include.description %}<p class="interior-hero__description">{{ include.description | escape }}</p>{% endif %}
+  </div>
+</section>

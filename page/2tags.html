@@ -1,63 +1,55 @@
 ---
 layout: default
-title: Tags
+title: 标签索引
+description: 以关键词连接相关文章，从一个知识点发现更多可能。
 permalink: /tag/
 icon: tags
 type: page
 ---
-
-<div id="main-content" class="page clearfix">
-    <div class="left">
-        <h1>{{page.title}}</h1>
-        <hr>
-        {% capture tags %}
-          {% for tag in site.tags %}
-            {{ tag[0] }}
-          {% endfor %}
-        {% endcapture %}
-        {% assign sortedtags = tags | split:' ' | sort %}
-
-        <ul>
-        {% for tag in sortedtags %}
-          <h2 id="{{ tag }}">{{ tag }}</h2>
-          {% for post in site.tags[tag] %}
-            <li>
-                <time>
-                {{ post.date | date:"%F" }} {{ post.date | date: "%a" }}.
-                </time>
-                <a class="title" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-
-                {% include category.html %}
-                {% include tag.html %}
-            </li>
-          {% endfor %}
-        {% endfor %}
-        </ul>
-
-    </div>
-    <button class="anchor" type="button" aria-label="打开目录"><i class="fa fa-anchor"></i></button>
-    <div class="right">
-        <div class="wrap">
-
-            <!-- Content -->
-            <div class="side content">
-                <div>
-                    Content
-                </div>
-                <ul id="content-side" class="content-ul">
-                    {% for tag in sortedtags %}
-                    <li>
-                        <a data-scroll href="#{{ tag }}">
-                            {{ tag }} ({{ site.tags[tag].size }})
-                        </a>
-                    </li>
-                    {% endfor %}
-
-                </ul>
-            </div>
-            <!-- 其他div框放到这里 -->
-            <!-- <div class="side">bbbb</div> -->
+{% assign tags_sorted = site.tags | sort %}
+<main id="main-content" class="interior interior--listing">
+  {% include interior-banner.html title=page.title description=page.description eyebrow="03 / TAGS" %}
+  <div class="interior-container interior-layout">
+    <div class="interior-main">
+      <div class="interior-toolbar">
+        <div>
+          <p class="interior-overline">KEYWORDS</p>
+          <h2>关键词地图</h2>
+          <p>共 {{ tags_sorted.size }} 个标签，探索关联内容。</p>
         </div>
+        <label class="interior-search">
+          <span class="interior-search__icon" aria-hidden="true">⌕</span>
+          <span class="visually-hidden">搜索标签文章</span>
+          <input type="search" data-filter-input placeholder="搜索标签或文章" autocomplete="off" aria-label="搜索标签或文章">
+        </label>
+      </div>
+      <p class="interior-filter-status" role="status" aria-live="polite" data-filter-status></p>
+      <p class="interior-no-results" data-filter-empty hidden>没有找到匹配的标签或文章。</p>
+      {% for tag in tags_sorted %}
+        <section class="interior-group" id="{{ tag[0] | slugify }}" data-filter-group data-filter-group-name="{{ tag[0] | downcase | escape }}">
+          <div class="interior-group__heading">
+            <h2><span class="interior-heading-hash" aria-hidden="true">#</span>{{ tag[0] | escape }}</h2>
+            <span>{{ tag[1].size }} 篇</span>
+          </div>
+          <div class="interior-preview-list">
+            {% for post in tag[1] %}{% include post-preview.html post=post %}{% endfor %}
+          </div>
+        </section>
+      {% endfor %}
+      {% if tags_sorted.size == 0 %}<p class="interior-no-results">还没有创建标签。</p>{% endif %}
     </div>
-</div>
-<script src="{{ '/js/pageContent.js' | relative_url }}" charset="utf-8"></script>
+    <aside class="interior-aside" aria-label="标签快速导航">
+      <div class="interior-aside__panel">
+        <p class="interior-aside__eyebrow">TAG CLOUD</p>
+        <h2>热门关键词</h2>
+        <nav class="interior-tag-cloud">
+          {% for tag in tags_sorted %}
+            <a href="#{{ tag[0] | slugify }}">#{{ tag[0] | escape }} <span>{{ tag[1].size }}</span></a>
+          {% endfor %}
+        </nav>
+        <a class="interior-aside__link" href="{{ '/category/' | relative_url }}">查看文章分类 <span aria-hidden="true">↗</span></a>
+      </div>
+    </aside>
+  </div>
+</main>
+<script src="{{ '/js/interior.js' | relative_url }}" defer></script>
