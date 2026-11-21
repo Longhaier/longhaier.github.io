@@ -1,34 +1,19 @@
-<header id="top">
-    <div class="wrapper">
-        <a href="{{ site.baseurl }}/" class="brand">{{ site.title }}</a>
-        <small>{{site.brief-intro}}</small>
-        <button id="headerMenu" class="menu"><i class="fa fa-bars"></i></button>
-        <nav id="headerNav">
-            <ul>
-                <li>
-                    {% if page.url == '/' %}
-                    <a class="active" href="{{site.baseurl}}/">
-                        {% else %}
-                    <a href="{{site.baseurl}}/">
-                    {% endif %}
-                        <i class="fa fa-home"></i>Home
-                    </a>
-                </li>
-
-                {% for my_page in site.pages %}
-                    {% if my_page.type == 'page' %}
-                    <li>
-                        {% if my_page.url == page.url %}
-                        <a class="active" href="{{ my_page.url | prepend: site.baseurl }}">
-                            {% else %}
-                        <a href="{{ my_page.url | prepend: site.baseurl }}">
-                        {% endif %}
-                            <i class="fa fa-{{my_page.icon}}"></i>{{ my_page.title }}
-                        </a>
-                    </li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-        </nav>
-    </div>
+<header class="site-header" id="top">
+  <div class="site-header__inner">
+    <a class="site-brand" href="{{ '/' | relative_url }}" aria-label="Longhaier 首页">
+      <span class="site-brand__mark" aria-hidden="true">L</span>
+      <span>Longhaier<span class="site-brand__dot">.</span></span>
+    </a>
+    <button id="headerMenu" class="site-menu-toggle" type="button" aria-label="打开导航菜单" aria-expanded="false" aria-controls="headerNav">☰</button>
+    <nav id="headerNav" class="site-nav" aria-label="主导航">
+      <ul class="site-nav__list">
+        <li><a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>首页</a></li>
+        <li><a href="{{ '/archive/' | relative_url }}"{% if page.url == '/archive/' %} aria-current="page"{% endif %}>归档</a></li>
+        <li><a href="{{ '/category/' | relative_url }}"{% if page.url == '/category/' %} aria-current="page"{% endif %}>分类</a></li>
+        <li><a href="{{ '/tag/' | relative_url }}"{% if page.url == '/tag/' %} aria-current="page"{% endif %}>标签</a></li>
+        <li><a href="{{ '/about/' | relative_url }}"{% if page.url == '/about/' %} aria-current="page"{% endif %}>关于</a></li>
+        <li><a class="site-nav__github" href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
+      </ul>
+    </nav>
+  </div>
 </header>

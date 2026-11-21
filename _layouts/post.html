@@ -64,12 +64,14 @@ layout: default
 
         {% include previousAndNext.html %}
 
+        {% if site.gitalk.enable or site.disqus_shortname or site.duoshuo_shortname %}
         <h2 id="comments">Comments</h2>
         {% include comments.html %}
+        {% endif %}
 
 
     </div>
-    <button class="anchor"><i class="fa fa-anchor"></i></button>
+    <button class="anchor" type="button" aria-label="打开目录"><i class="fa fa-anchor"></i></button>
     <div class="right">
         <div class="wrap">
 
@@ -82,7 +84,7 @@ layout: default
                     {% if hasSimilar.size > 0 %}
                     <li><a href="#similar_posts">Similar Posts</a></li>
                     {% endif %}
-                    <li><a href="#comments">Comments</a></li>
+                    {% if site.gitalk.enable or site.disqus_shortname or site.duoshuo_shortname %}<li><a href="#comments">Comments</a></li>{% endif %}
                 </ul>
             </div>
             <!-- 其他div框放到这里 -->
@@ -101,4 +103,4 @@ layout: default
     }
 }());
 </script>
-<script src="{{ "/js/pageContent.js " | prepend: site.baseurl }}" charset="utf-8"></script>
+<script src="{{ '/js/pageContent.js' | relative_url }}" charset="utf-8"></script>
