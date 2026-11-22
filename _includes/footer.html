@@ -10,5 +10,13 @@
       <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
       {% if site.email %}<a href="mailto:{{ site.email }}">联系</a>{% endif %}
     </div>
+    <nav class="site-footer__related" aria-labelledby="footer-related-sites">
+      <p id="footer-related-sites" class="site-footer__related-label">相关网站</p>
+      <div class="site-footer__links">
+        {% for project in site.data.projects %}
+          <a href="{{ project.url }}">{{ project.name }}</a>
+        {% endfor %}
+      </div>
+    </nav>
   </div>
 </footer>
