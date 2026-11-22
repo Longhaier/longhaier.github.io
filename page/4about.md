@@ -22,18 +22,14 @@ type: page
 
 ## 代表项目
 
-### ProEngineerCalc · 工程计算工具箱
+{% for project in site.data.projects %}
+### {{ project.name }} · {{ project.subtitle }}
 
-围绕暖通、电气、流体和结构领域的常见问题设计的在线计算工具。
+{{ project.description }}
 
-[查看 GitHub 项目](https://github.com/TaoBuilds/proengineercalc.xyz)
+[访问 {{ project.name }}]({{ project.url }}) · [GitHub 仓库]({{ project.repository }})
 
-### SmartFacility · 智能厂务与节能笔记
-
-记录工业能源管理、设施运维和节能优化方面的技术文章。
-
-[查看 GitHub 项目](https://github.com/TaoBuilds/smartfacility.tech)
-
+{% endfor %}
 
 ## 联系与交流
 

@@ -1,0 +1,15 @@
+- name: 厂务能源网
+  subtitle: 半导体厂务节能
+  description: 中文厂务技术站，分享洁净室暖通、空压系统、循环水和设备运维的节能案例与实践。
+  url: https://factoryenergy.site/
+  repository: https://github.com/TaoBuilds/factoryenergy.site
+- name: Smart Facility
+  subtitle: 英文厂务工程期刊
+  description: 以英文记录工业能效、厂务公用系统、智能工厂与预测性维护，面向设施和能源管理从业者。
+  url: https://smartfacility.tech/
+  repository: https://github.com/TaoBuilds/smartfacility.tech
+- name: ProEngineerCalc
+  subtitle: 工程计算工具箱
+  description: 提供暖通、电气、流体和结构四类共 20 个在线计算器。每个工具都列出输入参数、计算结果和计算依据，适合工程初步估算。
+  url: https://proengineercalc.xyz/
+  repository: https://github.com/TaoBuilds/proengineercalc.xyz
