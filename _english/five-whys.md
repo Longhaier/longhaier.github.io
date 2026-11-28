@@ -37,7 +37,12 @@ I'll write about them a little at a time, both to deepen my own understanding an
 
 When a problem arises, ask why it happened. Ask why again for each answer until you reach an underlying cause you can address. The method uses about five rounds of questioning and was developed and popularized at Toyota in Japan.
 
-![Five Whys illustration](https://wiki.mbalib.com/w/images/8/8f/5why.jpg)
+The [original diagram](https://wiki.mbalib.com/w/images/8/8f/5why.jpg) follows the problem from the visible symptom to the conditions that caused it.
+
+1. **Visible symptom.** Measure what happened and contain the immediate problem.
+2. **Immediate cause.** Take a temporary corrective action while you continue asking why.
+3. **Deeper causes.** Look for opportunities to improve the process and make errors harder to repeat.
+4. **Root cause.** Make a lasting change that addresses the underlying conditions.
 
 ### Why learn it?
 
