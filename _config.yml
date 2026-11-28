@@ -84,3 +84,7 @@ excerpt_separator: "\t\t\t\t"
 # paginate
 gems: [jekyll-paginate]
 paginate: 6
+
+collections:
+  english:
+    output: true

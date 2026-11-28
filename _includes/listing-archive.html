@@ -1,5 +1,6 @@
 {% include locale.html %}
-{% assign year_groups = site.posts | group_by_exp: "entry", "entry.date | date: '%Y'" %}
+{% include journal-posts.html %}
+{% assign year_groups = journal_posts | group_by_exp: "entry", "entry.date | date: '%Y'" %}
 {% assign listing = ui.archive %}
 <main id="main-content" class="interior interior--listing">
   {% include interior-banner.html title=page.title description=page.description eyebrow="01 / JOURNAL" %}
@@ -9,7 +10,7 @@
         <div>
           <p class="interior-overline">ALL STORIES</p>
           <h2>{{ listing.title }}</h2>
-          <p>{{ listing.summary | replace: '%count%', site.posts.size }}</p>
+          <p>{{ listing.summary | replace: '%count%', journal_posts.size }}</p>
         </div>
         <label class="interior-search">
           <span class="interior-search__icon" aria-hidden="true">⌕</span>
@@ -29,7 +30,7 @@
           </div>
         </section>
       {% endfor %}
-      {% if site.posts.size == 0 %}<p class="interior-no-results">{{ listing.empty }}</p>{% endif %}
+      {% if journal_posts.size == 0 %}<p class="interior-no-results">{{ listing.empty }}</p>{% endif %}
     </div>
     <aside class="interior-aside" aria-label="{{ listing.aside }}">
       <div class="interior-aside__panel">

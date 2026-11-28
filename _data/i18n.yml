@@ -33,6 +33,17 @@ zh-CN:
   category_link: 文章分类
   tag_link: 标签索引
   read_article: 阅读全文
+  article_label: 文章
+  article_date: "%Y年%m月%d日"
+  article_tags: 文章标签
+  adjacent_articles: 相邻文章
+  previous_article: 上一篇
+  next_article: 下一篇
+  related_articles: 继续阅读
+  comments: 评论交流
+  article_navigation: 文章阅读导航
+  article_contents: 文章目录
+  article_explore: 发现更多
   filter_all: 正在展示 %count% 条记录
   filter_matches: 找到 %count% 条匹配记录
   post_count: "%count% 篇"
@@ -119,14 +130,24 @@ en:
   category_link: Browse categories
   tag_link: Browse tags
   read_article: Read article
-  original_language: Chinese
-  read_original: Read in Chinese
+  article_label: Article
+  article_date: "%B %-d, %Y"
+  article_tags: Article tags
+  adjacent_articles: Previous and next articles
+  previous_article: Previous article
+  next_article: Next article
+  related_articles: Keep reading
+  comments: Comments
+  article_navigation: Article navigation
+  article_contents: On this page
+  article_explore: Browse more
+  feed_description: "TaoBuilds writes about engineering, software and what goes into building useful tools."
   filter_all: "Showing all entries (%count%)"
   filter_matches: "Matching entries: %count%"
   post_count: "Posts: %count%"
   archive:
     title: All articles
-    summary: "%count% articles, newest first. Chinese originals are marked."
+    summary: "%count% articles, newest first."
     search: Search articles
     placeholder: Search titles, categories, or tags
     no_results: No articles match your search. Try another keyword.
@@ -159,7 +180,7 @@ en:
     read: Browse articles
     about: About me and my projects
     latest: Latest notes
-    latest_description: Engineering, code, and lessons from putting ideas to work. Posts with Chinese originals are marked.
+    latest_description: Engineering, code, and lessons from putting ideas to work.
     all: All articles
     empty: New articles are on the way.
     explore: Explore the blog
