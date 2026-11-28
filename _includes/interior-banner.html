@@ -1,7 +1,7 @@
 <section class="interior-hero" aria-labelledby="interior-title">
   <div class="interior-container">
-    <nav class="interior-breadcrumb" aria-label="面包屑导航">
-      <a href="{{ '/' | relative_url }}">首页</a>
+    <nav class="interior-breadcrumb" aria-label="{{ ui.breadcrumbs }}">
+      <a href="{{ '/' | prepend: ui.prefix | relative_url }}">{{ ui.home_label }}</a>
       <span aria-hidden="true">/</span>
       <span aria-current="page">{{ include.title | default: page.title | escape }}</span>
     </nav>

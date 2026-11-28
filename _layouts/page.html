@@ -1,6 +1,7 @@
 ---
 layout: default
 ---
+{% include locale.html %}
 <main id="main-content" class="interior interior--reading">
   {% include interior-banner.html title=page.title description=page.description eyebrow="TAOBUILDS / PAGES" %}
   <div class="interior-container interior-layout">
@@ -9,23 +10,21 @@ layout: default
         {{ content }}
       </article>
       <div class="interior-bottom-nav">
-        <a href="{{ '/' | relative_url }}">← 返回首页</a>
-        <a href="{{ '/archive/' | relative_url }}">阅读全部文章 ↗</a>
+        <a href="{{ '/' | prepend: ui.prefix | relative_url }}">← {{ ui.back_home }}</a>
+        <a href="{{ '/archive/' | prepend: ui.prefix | relative_url }}">{{ ui.all_posts }} ↗</a>
       </div>
     </div>
-    <aside class="interior-aside" aria-label="页面导航">
+    <aside class="interior-aside" aria-label="{{ ui.page_navigation }}">
       <div class="interior-aside__panel" data-toc-panel hidden>
-        <p class="interior-aside__eyebrow">ON THIS PAGE</p>
-        <h2>页面目录</h2>
-        <nav class="interior-side-nav" data-toc-list aria-label="页面目录"></nav>
+        <h2>{{ ui.table_of_contents }}</h2>
+        <nav class="interior-side-nav" data-toc-list aria-label="{{ ui.table_of_contents }}"></nav>
       </div>
       <div class="interior-aside__panel interior-aside__panel--subtle">
-        <p class="interior-aside__eyebrow">EXPLORE MORE</p>
-        <h2>继续探索</h2>
+        <h2>{{ ui.explore_more }}</h2>
         <nav class="interior-side-nav">
-          <a href="{{ '/archive/' | relative_url }}">文章归档 <span aria-hidden="true">↗</span></a>
-          <a href="{{ '/category/' | relative_url }}">文章分类 <span aria-hidden="true">↗</span></a>
-          <a href="{{ '/tag/' | relative_url }}">标签索引 <span aria-hidden="true">↗</span></a>
+          <a href="{{ '/archive/' | prepend: ui.prefix | relative_url }}">{{ ui.archive_link }} <span aria-hidden="true">↗</span></a>
+          <a href="{{ '/category/' | prepend: ui.prefix | relative_url }}">{{ ui.category_link }} <span aria-hidden="true">↗</span></a>
+          <a href="{{ '/tag/' | prepend: ui.prefix | relative_url }}">{{ ui.tag_link }} <span aria-hidden="true">↗</span></a>
         </nav>
       </div>
     </aside>

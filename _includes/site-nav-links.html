@@ -1,0 +1,5 @@
+{% for item in ui.nav %}
+  {% assign target = item.path | prepend: ui.prefix %}
+  <li><a href="{{ target | relative_url }}"{% if page.url == target %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
+{% endfor %}
+<li><a{% if include.desktop %} class="site-nav__github"{% endif %} href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>

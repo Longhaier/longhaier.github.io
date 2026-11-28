@@ -2,19 +2,20 @@
   <div class="site-footer__inner">
     <div>
       <p class="site-footer__identity">TaoBuilds<span class="site-brand__dot">.</span></p>
-      <p class="site-footer__caption">保持好奇，持续创造。 · Powered by Jekyll & GitHub Pages</p>
+      <p class="site-footer__caption">{{ ui.footer_caption }} · Powered by Jekyll &amp; GitHub Pages</p>
     </div>
     <div class="site-footer__links">
-      <a href="{{ '/archive/' | relative_url }}">文章</a>
-      <a href="{{ '/about/' | relative_url }}">关于</a>
+      <a href="{{ '/archive/' | prepend: ui.prefix | relative_url }}">{{ ui.articles }}</a>
+      <a href="{{ '/about/' | prepend: ui.prefix | relative_url }}">{{ ui.about }}</a>
       <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-      {% if site.email %}<a href="mailto:{{ site.email }}">联系</a>{% endif %}
+      {% if site.email %}<a href="mailto:{{ site.email }}">{{ ui.contact }}</a>{% endif %}
     </div>
     <nav class="site-footer__related" aria-labelledby="footer-related-sites">
-      <p id="footer-related-sites" class="site-footer__related-label">相关网站</p>
+      <p id="footer-related-sites" class="site-footer__related-label">{{ ui.related_sites }}</p>
       <div class="site-footer__links">
         {% for project in site.data.projects %}
-          <a href="{{ project.url }}">{{ project.name }}</a>
+          {% assign project_labels = project[locale] | default: project %}
+          <a href="{{ project.url }}">{{ project_labels.name }}</a>
         {% endfor %}
       </div>
     </nav>

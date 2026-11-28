@@ -1,0 +1,116 @@
+{% include locale.html %}
+<main class="home" id="main-content">
+  <section class="home-hero" aria-labelledby="home-title">
+    <div class="home-hero__grid" aria-hidden="true"></div>
+    <div class="home-container home-hero__content">
+      <div class="home-hero__copy">
+        <p class="home-eyebrow"><span class="home-status-dot" aria-hidden="true"></span> TAOBUILDS / NOTES & BUILDING</p>
+        <h1 id="home-title">{{ ui.home.title }}<br><span>{{ ui.home.title_accent }}</span></h1>
+        <p class="home-hero__intro">{{ ui.home.intro }}</p>
+        <div class="home-actions">
+          <a class="home-button home-button--primary" href="#latest">{{ ui.home.read }} <span aria-hidden="true">↗</span></a>
+          <a class="home-button home-button--ghost" href="{{ '/about/' | prepend: ui.prefix | relative_url }}">{{ ui.home.about }} <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="home-hero__footnote"><span>THINK</span><span class="home-footnote-line"></span><span>BUILD</span><span class="home-footnote-line"></span><span>SHARE</span></div>
+      </div>
+
+      <div class="home-hero__visual" aria-hidden="true">
+        <div class="home-window">
+          <div class="home-window__top"><span class="home-window__dots"><i></i><i></i><i></i></span><span>taobuilds / workspace</span><span class="home-window__symbol">↗</span></div>
+          <div class="home-window__body">
+            <p class="home-code__comment">// A small space for big curiosity.</p>
+            <p><span class="home-code__keyword">const</span> mindset = {</p>
+            <p class="home-code__indent">curiosity: <span class="home-code__string">"always on"</span>,</p>
+            <p class="home-code__indent">focus: [<span class="home-code__string">"engineering"</span>,</p>
+            <p class="home-code__indent home-code__indent--deep"><span class="home-code__string">"technology"</span>, <span class="home-code__string">"AI"</span>],</p>
+            <p class="home-code__indent">action: <span class="home-code__string">"keep building"</span></p>
+            <p>};</p>
+            <p class="home-code__output"><span class="home-code__prompt">➜</span> learn · build · repeat<span class="home-code__cursor">_</span></p>
+          </div>
+        </div>
+        <div class="home-orbit home-orbit--one"></div>
+        <div class="home-orbit home-orbit--two"></div>
+        <span class="home-floating-chip home-floating-chip--top">✳ IDEAS INTO ACTION</span>
+        <span class="home-floating-chip home-floating-chip--bottom">OPEN TO LEARNING ↗</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="home-section home-container" id="latest" aria-labelledby="latest-heading">
+    <div class="home-section__heading">
+      <div>
+        <p class="home-section__eyebrow">01 / THE JOURNAL</p>
+        <h2 id="latest-heading">{{ ui.home.latest }}<span class="home-heading-dot">.</span></h2>
+        <p class="home-section__description">{{ ui.home.latest_description }}</p>
+      </div>
+      <a class="home-text-link" href="{{ '/archive/' | prepend: ui.prefix | relative_url }}">{{ ui.home.all }} <span aria-hidden="true">↗</span></a>
+    </div>
+
+    {% assign home_posts = paginator.posts | default: site.posts %}
+    {% if home_posts.size > 0 %}
+      <div class="home-post-grid">
+        {% for post in home_posts limit:6 %}
+        {% include post-labels.html entry=post %}
+        <article class="home-post">
+          <div class="home-post__meta">
+            <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%Y.%m.%d" }}</time>
+            {% if post.categories.size > 0 %}
+              <span class="home-post__category">{{ post.categories | first | escape }}</span>
+            {% endif %}
+            {% if show_original_language %}<span class="home-post__category">{{ ui.original_language }}</span>{% endif %}
+          </div>
+          <h3><a href="{{ post.url | relative_url }}" lang="{{ post_title_lang }}" hreflang="{{ post_lang }}">{{ post_title | escape }}</a></h3>
+          {% if post_excerpt %}<p class="home-post__excerpt">{{ post_excerpt | truncate: 115 | escape }}</p>{% endif %}
+          <a class="home-post__read" href="{{ post.url | relative_url }}" hreflang="{{ post_lang }}">{{ post_action }} <span aria-hidden="true">↗</span></a>
+        </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="home-empty">{{ ui.home.empty }}</p>
+    {% endif %}
+
+    {% if locale == 'zh-CN' and paginator and paginator.total_pages > 1 %}
+      <nav class="home-pagination" aria-label="文章分页">
+        {% if paginator.previous_page %}
+          <a href="{{ paginator.previous_page_path | relative_url }}">← 上一页</a>
+        {% else %}
+          <span class="home-pagination__disabled">← 上一页</span>
+        {% endif %}
+        <span>第 {{ paginator.page }} / {{ paginator.total_pages }} 页</span>
+        {% if paginator.next_page %}
+          <a href="{{ paginator.next_page_path | relative_url }}">下一页 →</a>
+        {% else %}
+          <span class="home-pagination__disabled">下一页 →</span>
+        {% endif %}
+      </nav>
+    {% endif %}
+  </section>
+
+  <section class="home-discover" aria-labelledby="discover-heading">
+    <div class="home-container">
+      <div class="home-section__heading">
+        <div>
+          <p class="home-section__eyebrow">02 / EXPLORE</p>
+          <h2 id="discover-heading">{{ ui.home.explore }}<span class="home-heading-dot">.</span></h2>
+          <p class="home-section__description">{{ ui.home.explore_description }}</p>
+        </div>
+      </div>
+      <div class="home-discover__grid">
+        {% for card in ui.home.discover %}
+          <a class="home-discover__card" href="{{ card.path | prepend: ui.prefix | relative_url }}">
+            <span class="home-discover__icon" aria-hidden="true">{{ card.icon }}</span>
+            <span class="home-discover__label">{{ card.label }}</span>
+            <strong>{{ card.title }}</strong>
+            <span class="home-discover__detail">{{ card.detail }}</span>
+            <span class="home-discover__arrow" aria-hidden="true">↗</span>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="home-closing home-container" aria-label="{{ ui.home.github_label }}">
+    <div><p class="home-section__eyebrow">STAY CURIOUS</p><h2>{{ ui.home.github_heading }}</h2><p>{{ ui.home.github_description }}</p></div>
+    <a class="home-button home-button--dark" href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer">{{ ui.home.github_action }} <span aria-hidden="true">↗</span></a>
+  </section>
+</main>

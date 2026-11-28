@@ -1,0 +1,48 @@
+{% include locale.html %}
+{% assign tags_sorted = site.tags | sort %}
+{% assign listing = ui.tag %}
+<main id="main-content" class="interior interior--listing">
+  {% include interior-banner.html title=page.title description=page.description eyebrow="03 / TAGS" %}
+  <div class="interior-container interior-layout">
+    <div class="interior-main">
+      <div class="interior-toolbar">
+        <div>
+          <p class="interior-overline">KEYWORDS</p>
+          <h2>{{ listing.title }}</h2>
+          <p>{{ listing.summary | replace: '{count}', tags_sorted.size }}</p>
+        </div>
+        <label class="interior-search">
+          <span class="interior-search__icon" aria-hidden="true">⌕</span>
+          <input type="search" data-filter-input placeholder="{{ listing.search }}" autocomplete="off" aria-label="{{ listing.search }}">
+        </label>
+      </div>
+      <p class="interior-filter-status" role="status" aria-live="polite" data-filter-status data-all="{{ ui.filter_all }}" data-matches="{{ ui.filter_matches }}"></p>
+      <p class="interior-no-results" data-filter-empty hidden>{{ listing.no_results }}</p>
+      {% for tag in tags_sorted %}
+        <section class="interior-group" id="{{ tag[0] | slugify }}" data-filter-group data-filter-group-name="{{ tag[0] | downcase | escape }}">
+          <div class="interior-group__heading">
+            <h2><span class="interior-heading-hash" aria-hidden="true">#</span>{{ tag[0] | escape }}</h2>
+            <span>{{ ui.post_count | replace: '{count}', tag[1].size }}</span>
+          </div>
+          <div class="interior-preview-list">
+            {% for post in tag[1] %}{% include post-preview.html post=post %}{% endfor %}
+          </div>
+        </section>
+      {% endfor %}
+      {% if tags_sorted.size == 0 %}<p class="interior-no-results">{{ listing.empty }}</p>{% endif %}
+    </div>
+    <aside class="interior-aside" aria-label="{{ listing.aside }}">
+      <div class="interior-aside__panel">
+        <p class="interior-aside__eyebrow">TAG CLOUD</p>
+        <h2>{{ listing.aside_title }}</h2>
+        <nav class="interior-tag-cloud">
+          {% for tag in tags_sorted %}
+            <a href="#{{ tag[0] | slugify }}">#{{ tag[0] | escape }} <span>{{ tag[1].size }}</span></a>
+          {% endfor %}
+        </nav>
+        <a class="interior-aside__link" href="{{ '/category/' | prepend: ui.prefix | relative_url }}">{{ listing.related }} <span aria-hidden="true">↗</span></a>
+      </div>
+    </aside>
+  </div>
+</main>
+<script src="{{ '/js/interior.js' | relative_url }}" defer></script>

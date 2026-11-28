@@ -1,8 +1,9 @@
+{%- include locale.html -%}
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="{{ locale }}">
   {% include head.html %}
   <body>
-    <a class="skip-link" href="#main-content">跳转到主要内容</a>
+    <a class="skip-link" href="#main-content">{{ ui.skip }}</a>
     {% include header.html %}
     {{ content }}
     {% include footer.html %}

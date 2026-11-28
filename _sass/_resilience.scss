@@ -98,3 +98,22 @@ table { max-width: 100%; }
 @media (hover: none) {
   .interior-preview:hover, .home-post:hover, .home-project:hover { transform: none; }
 }
+
+.site-language {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  padding: 7px 12px;
+  border: 1px solid #cbdced;
+  border-radius: 10px;
+  color: #155caa;
+  background: #f4f8ff;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.site-language:hover { background: #eaf3ff; }
+@media (max-width: 980px) {
+  .site-language { margin-left: auto; }
+  .site-mobile-nav { margin-left: 0; }
+}

@@ -2,6 +2,7 @@
 layout: page
 title: 资源收藏
 permalink: /collection/
+translation: /en/collection/
 icon: bookmark
 type: page
 ---
