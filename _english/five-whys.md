@@ -37,7 +37,7 @@ I'll write about them a little at a time, both to deepen my own understanding an
 
 When a problem arises, ask why it happened. Ask why again for each answer until you reach an underlying cause you can address. The method uses about five rounds of questioning and was developed and popularized at Toyota in Japan.
 
-The [original diagram](https://wiki.mbalib.com/w/images/8/8f/5why.jpg) follows the problem from the visible symptom to the conditions that caused it.
+The original diagram follows the problem from the visible symptom to the conditions that caused it. [View the diagram](https://wiki.mbalib.com/w/images/8/8f/5why.jpg)
 
 1. **Visible symptom.** Measure what happened and contain the immediate problem.
 2. **Immediate cause.** Take a temporary corrective action while you continue asking why.
@@ -59,7 +59,7 @@ One principle to remember during Five Whys training is that process design deser
 
 Follow more than one branch when the evidence points to multiple causes. Once you identify a cause, pair it with an action that addresses it.
 
-For a productive session:
+These practices help the team run an effective session.
 
 - Bring the right people together. For a difficult problem, consider a facilitator.
 - Use paper or a whiteboard so everyone can see the analysis taking shape.

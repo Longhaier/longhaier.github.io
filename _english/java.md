@@ -16,7 +16,7 @@ tags: [Java]
 
 Build a simple array manager that can enter and display integers, insert an integer at a chosen position, and find values divisible by three.
 
-The exercise calls for a class named `DataManage` with these methods:
+The exercise calls for a class named `DataManage`. Its methods support the following operations.
 
 - `public int[] insertData()` reads the initial entries.
 - `public void showData(int[] a, int length)` displays the array.
