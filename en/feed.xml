@@ -2,4 +2,5 @@
 layout: null
 lang: en
 ---
-{%- include journal-feed.xml -%}
+<?xml version="1.0" encoding="UTF-8"?>
+{% include journal-feed.xml %}

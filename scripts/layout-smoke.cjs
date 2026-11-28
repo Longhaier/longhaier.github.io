@@ -168,8 +168,18 @@ async function visit(browser, width, route, opts={}) {
     }
     const feed = await english.request.get(ORIGIN+'/en/feed.xml');
     assert.equal(feed.status(), 200);
-    assert.match(await feed.text(), /<language>en<\/language>/);
-    assert.match(await feed.text(), /<link>https:\/\/taobuilds.github.io\/en\/2019\/03\/13\/java\/<\/link>/);
+    const feedText = await feed.text();
+    const channels = await english.evaluate(xml => {
+      const doc = new DOMParser().parseFromString(xml, 'application/xml');
+      return Array.from(doc.querySelectorAll('channel > language'), node => node.textContent);
+    }, feedText);
+    assert.deepEqual(channels, ['en'], 'well-formed English RSS');
+    assert.match(feedText, /<link>https:\/\/taobuilds.github.io\/en\/2019\/03\/13\/java\/<\/link>/);
+    const chineseFeed = await english.request.get(ORIGIN+'/feed.xml');
+    const chineseFeedText = await chineseFeed.text();
+    assert.equal(chineseFeed.status(), 200);
+    assert.ok(chineseFeedText.startsWith('<?xml '), 'Chinese RSS starts with its XML declaration');
+    assert.match(chineseFeedText, /<language>zh-CN<\/language>/);
     await english.close();
     // Exercise the original article layout on mobile and desktop too.
     const context=await browser.newContext();
