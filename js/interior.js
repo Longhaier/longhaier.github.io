@@ -27,7 +27,7 @@
       });
       if (status) {
         var message = status.getAttribute(term ? 'data-matches' : 'data-all');
-        status.textContent = message.replace('{count}', term ? visible : total);
+        status.textContent = message.replace('%count%', term ? visible : total);
       }
       if (empty) empty.hidden = !term || visible > 0;
     }

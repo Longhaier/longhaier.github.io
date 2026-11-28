@@ -33,12 +33,12 @@ zh-CN:
   category_link: 文章分类
   tag_link: 标签索引
   read_article: 阅读全文
-  filter_all: 正在展示 {count} 条记录
-  filter_matches: 找到 {count} 条匹配记录
-  post_count: "{count} 篇"
+  filter_all: 正在展示 %count% 条记录
+  filter_matches: 找到 %count% 条匹配记录
+  post_count: "%count% 篇"
   archive:
     title: 时间里的记录
-    summary: 共 {count} 篇文章，最新的放在最前面。
+    summary: 共 %count% 篇文章，最新的放在最前面。
     search: 搜索归档文章
     placeholder: 搜索标题、分类或标签
     no_results: 没有找到匹配的文章，请尝试其他关键词。
@@ -48,7 +48,7 @@ zh-CN:
     related: 按分类查找
   category:
     title: 从主题开始探索
-    summary: "{count} 个分类，按文章内容自动整理。"
+    summary: "%count% 个分类，按文章内容自动整理。"
     search: 搜索分类或文章
     no_results: 没有找到匹配的分类或文章。
     empty: 还没有创建分类。
@@ -57,7 +57,7 @@ zh-CN:
     related: 查看文章归档
   tag:
     title: 关键词地图
-    summary: 共 {count} 个标签，探索关联内容。
+    summary: 共 %count% 个标签，探索关联内容。
     search: 搜索标签或文章
     no_results: 没有找到匹配的标签或文章。
     empty: 还没有创建标签。
@@ -121,12 +121,12 @@ en:
   read_article: Read article
   original_language: Chinese
   read_original: Read in Chinese
-  filter_all: "Showing all entries ({count})"
-  filter_matches: "Matching entries: {count}"
-  post_count: "Posts: {count}"
+  filter_all: "Showing all entries (%count%)"
+  filter_matches: "Matching entries: %count%"
+  post_count: "Posts: %count%"
   archive:
     title: All articles
-    summary: "{count} articles, newest first. Chinese originals are marked."
+    summary: "%count% articles, newest first. Chinese originals are marked."
     search: Search articles
     placeholder: Search titles, categories, or tags
     no_results: No articles match your search. Try another keyword.
@@ -136,7 +136,7 @@ en:
     related: Browse by category
   category:
     title: Browse by topic
-    summary: "{count} categories grouped by topic."
+    summary: "%count% categories grouped by topic."
     search: Search categories or articles
     no_results: No categories or articles match your search.
     empty: No categories yet.
@@ -145,7 +145,7 @@ en:
     related: See the article archive
   tag:
     title: Browse by keyword
-    summary: "{count} tags to help you find related articles."
+    summary: "%count% tags to help you find related articles."
     search: Search tags or articles
     no_results: No tags or articles match your search.
     empty: No tags yet.

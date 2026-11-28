@@ -9,7 +9,7 @@
         <div>
           <p class="interior-overline">ALL STORIES</p>
           <h2>{{ listing.title }}</h2>
-          <p>{{ listing.summary | replace: '{count}', site.posts.size }}</p>
+          <p>{{ listing.summary | replace: '%count%', site.posts.size }}</p>
         </div>
         <label class="interior-search">
           <span class="interior-search__icon" aria-hidden="true">⌕</span>
@@ -22,7 +22,7 @@
         <section class="interior-group" id="year-{{ year.name }}" data-filter-group>
           <div class="interior-group__heading">
             <h2>{{ year.name }}</h2>
-            <span>{{ ui.post_count | replace: '{count}', year.items.size }}</span>
+            <span>{{ ui.post_count | replace: '%count%', year.items.size }}</span>
           </div>
           <div class="interior-preview-list">
             {% for post in year.items %}{% include post-preview.html post=post %}{% endfor %}

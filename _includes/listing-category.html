@@ -9,7 +9,7 @@
         <div>
           <p class="interior-overline">TOPICS & DIRECTIONS</p>
           <h2>{{ listing.title }}</h2>
-          <p>{{ listing.summary | replace: '{count}', categories_sorted.size }}</p>
+          <p>{{ listing.summary | replace: '%count%', categories_sorted.size }}</p>
         </div>
         <label class="interior-search">
           <span class="interior-search__icon" aria-hidden="true">⌕</span>
@@ -22,7 +22,7 @@
         <section class="interior-group" id="{{ category[0] | slugify }}" data-filter-group data-filter-group-name="{{ category[0] | downcase | escape }}">
           <div class="interior-group__heading">
             <h2>{{ category[0] | escape }}</h2>
-            <span>{{ ui.post_count | replace: '{count}', category[1].size }}</span>
+            <span>{{ ui.post_count | replace: '%count%', category[1].size }}</span>
           </div>
           <div class="interior-preview-list">
             {% for post in category[1] %}{% include post-preview.html post=post %}{% endfor %}

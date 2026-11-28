@@ -9,7 +9,7 @@
         <div>
           <p class="interior-overline">KEYWORDS</p>
           <h2>{{ listing.title }}</h2>
-          <p>{{ listing.summary | replace: '{count}', tags_sorted.size }}</p>
+          <p>{{ listing.summary | replace: '%count%', tags_sorted.size }}</p>
         </div>
         <label class="interior-search">
           <span class="interior-search__icon" aria-hidden="true">⌕</span>
@@ -22,7 +22,7 @@
         <section class="interior-group" id="{{ tag[0] | slugify }}" data-filter-group data-filter-group-name="{{ tag[0] | downcase | escape }}">
           <div class="interior-group__heading">
             <h2><span class="interior-heading-hash" aria-hidden="true">#</span>{{ tag[0] | escape }}</h2>
-            <span>{{ ui.post_count | replace: '{count}', tag[1].size }}</span>
+            <span>{{ ui.post_count | replace: '%count%', tag[1].size }}</span>
           </div>
           <div class="interior-preview-list">
             {% for post in tag[1] %}{% include post-preview.html post=post %}{% endfor %}
