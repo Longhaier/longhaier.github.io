@@ -26,7 +26,8 @@
         visible += matches;
       });
       if (status) {
-        status.textContent = term ? '找到 ' + visible + ' 条匹配记录' : '正在展示 ' + total + ' 条记录';
+        var message = status.getAttribute(term ? 'data-matches' : 'data-all');
+        status.textContent = message.replace('%count%', term ? visible : total);
       }
       if (empty) empty.hidden = !term || visible > 0;
     }

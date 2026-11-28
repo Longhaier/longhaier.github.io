@@ -6,6 +6,8 @@ categories: Method
 tags: Method Process
 author: Longhaier
 mathjax: false
+en_title: "Problem-Solving Tools, Part 1"
+en_summary: "An introduction to using the Five Whys to trace a problem to its root cause, with tips for team discussions."
 ---
 
 * content

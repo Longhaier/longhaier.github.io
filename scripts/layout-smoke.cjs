@@ -30,6 +30,20 @@ async function visit(browser, width, route, opts={}) {
   page.on('pageerror',err=>errors.push(String(err)));
   const response = await page.goto(ORIGIN+route,{waitUntil:'load',timeout:25000});
   assert.equal(response?.status(),200,'HTTP status '+route);
+  const english = route.startsWith('/en/');
+  const locale = english ? 'en' : 'zh-CN';
+  assert.equal(await page.locator('html').getAttribute('lang'), locale);
+  const toggle = page.locator('.site-language');
+  assert.ok(await toggle.isVisible(), 'Language switch hidden on '+route);
+  const pairedRoute = english ? route.slice(3) : '/en'+route;
+  if (english || PAGES.includes(route)) {
+    const otherLocale = english ? 'zh-CN' : 'en';
+    assert.equal(await toggle.getAttribute('href'), pairedRoute);
+    assert.equal(await page.locator('head link[hreflang="'+otherLocale+'"]').getAttribute('href'),
+      'https://taobuilds.github.io'+pairedRoute);
+  } else {
+    assert.equal(await toggle.getAttribute('href'), '/en/');
+  }
   if(!opts.blockCSS) {
     const cssCheck=await page.evaluate(()=>{
       const el=document.querySelector('.site-header');
@@ -66,7 +80,8 @@ async function visit(browser, width, route, opts={}) {
     assert.ok(await detail.isVisible(),'mobile menu hidden');
     await page.locator('.site-mobile-nav summary').click();
     assert.equal(await detail.getAttribute('open'),'','mobile menu did not expand');
-    assert.ok(await page.locator('.site-mobile-nav a[href="/archive/"]').isVisible(),'archive link inaccessible');
+    const archive = english ? '/en/archive/' : '/archive/';
+    assert.ok(await page.locator('.site-mobile-nav a[href="'+archive+'"]').isVisible(),'archive link inaccessible');
     await page.locator('.site-mobile-nav summary').click();
   }
   if(opts.screenshot) {
@@ -88,9 +103,34 @@ async function visit(browser, width, route, opts={}) {
         console.log('OK',width,route);
       }
     }
+    for (const width of [320, 375, 1024, 1366]) {
+      for (const route of PAGES) {
+        const englishRoute = '/en'+route;
+        await visit(browser,width,englishRoute);
+        console.log('OK',width,englishRoute);
+      }
+    }
+    await visit(browser,375,'/en/',{js:false});
     // The script and its CDN dependencies are absent: native <details> still works.
     await visit(browser,375,'/archive/',{js:false});
     await visit(browser,375,'/archive/',{js:false,blockCSS:true});
+    const english = await browser.newPage({ viewport:{width:375,height:800} });
+    await english.goto(ORIGIN+'/en/about/');
+    await english.locator('.site-language').click();
+    assert.equal(new URL(english.url()).pathname, '/about/');
+    await english.locator('.site-language').click();
+    assert.equal(new URL(english.url()).pathname, '/en/about/');
+    assert.equal(await english.locator('.interior-article h3').count(), 3);
+    assert.ok(await english.getByRole('link', { name:'Follow TaoBuilds on X' }).isVisible());
+    await english.goto(ORIGIN+'/en/archive/');
+    const search = english.getByRole('searchbox', { name:'Search articles' });
+    await search.fill('array manager');
+    assert.equal(await english.getByRole('status').textContent(), 'Matching entries: 1');
+    assert.ok(await english.getByRole('link', { name:'A Simple Array Manager in Java' }).isVisible());
+    assert.equal(await english.getByRole('link', { name:'A Simple Array Manager in Java' }).getAttribute('hreflang'), 'zh-CN');
+    await search.fill('not-a-matching-title');
+    assert.ok(await english.getByText('No articles match your search.').isVisible());
+    await english.close();
     // At least one existing post page, not only top-level Jekyll paths.
     const context=await browser.newContext();
     const p=await context.newPage();

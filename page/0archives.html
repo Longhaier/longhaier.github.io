@@ -5,51 +5,6 @@ description: 按时间梳理技术笔记、项目实践与一路走来的思考�
 permalink: /archive/
 icon: archive
 type: page
+translation: /en/archive/
 ---
-{% assign year_groups = site.posts | group_by_exp: "entry", "entry.date | date: '%Y'" %}
-<main id="main-content" class="interior interior--listing">
-  {% include interior-banner.html title=page.title description=page.description eyebrow="01 / JOURNAL" %}
-  <div class="interior-container interior-layout">
-    <div class="interior-main">
-      <div class="interior-toolbar">
-        <div>
-          <p class="interior-overline">ALL STORIES</p>
-          <h2>时间里的记录</h2>
-          <p>共 {{ site.posts.size }} 篇文章，最新的放在最前面。</p>
-        </div>
-        <label class="interior-search">
-          <span class="interior-search__icon" aria-hidden="true">⌕</span>
-          <span class="visually-hidden">搜索归档文章</span>
-          <input type="search" data-filter-input placeholder="搜索标题、分类或标签" autocomplete="off" aria-label="搜索归档文章">
-        </label>
-      </div>
-      <p class="interior-filter-status" role="status" aria-live="polite" data-filter-status></p>
-      <p class="interior-no-results" data-filter-empty hidden>没有找到匹配的文章，请尝试其他关键词。</p>
-      {% for year in year_groups %}
-        <section class="interior-group" id="year-{{ year.name }}" data-filter-group>
-          <div class="interior-group__heading">
-            <h2>{{ year.name }}</h2>
-            <span>{{ year.items.size }} 篇</span>
-          </div>
-          <div class="interior-preview-list">
-            {% for post in year.items %}{% include post-preview.html post=post %}{% endfor %}
-          </div>
-        </section>
-      {% endfor %}
-      {% if site.posts.size == 0 %}<p class="interior-no-results">新的文章正在路上。</p>{% endif %}
-    </div>
-    <aside class="interior-aside" aria-label="归档年份导航">
-      <div class="interior-aside__panel">
-        <p class="interior-aside__eyebrow">JUMP TO YEAR</p>
-        <h2>按年份浏览</h2>
-        <nav class="interior-side-nav">
-          {% for year in year_groups %}
-            <a href="#year-{{ year.name }}"><span>{{ year.name }}</span><span>{{ year.items.size }}</span></a>
-          {% endfor %}
-        </nav>
-        <a class="interior-aside__link" href="{{ '/category/' | relative_url }}">按分类查找 <span aria-hidden="true">↗</span></a>
-      </div>
-    </aside>
-  </div>
-</main>
-<script src="{{ '/js/interior.js' | relative_url }}" defer></script>
+{% include listing-archive.html %}

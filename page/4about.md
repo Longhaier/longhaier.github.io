@@ -3,6 +3,7 @@ layout: page
 title: 关于
 description: 一个工程实践者的技术笔记、AI 实验和小产品构建记录。
 permalink: /about/
+translation: /en/about/
 icon: heart
 type: page
 ---
