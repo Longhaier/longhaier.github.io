@@ -1,23 +1,26 @@
 ---
 layout: default
 ---
+{% include locale.html %}
+{% include journal-posts.html %}
 <main id="main-content" class="interior interior--reading">
   <section class="interior-hero interior-hero--article">
     <div class="interior-container">
-      <nav class="interior-breadcrumb" aria-label="面包屑导航">
-        <a href="{{ '/' | relative_url }}">首页</a>
+      <nav class="interior-breadcrumb" aria-label="{{ ui.breadcrumbs }}">
+        <a href="{{ '/' | prepend: ui.prefix | relative_url }}">{{ ui.home_label }}</a>
         <span aria-hidden="true">/</span>
-        <a href="{{ '/archive/' | relative_url }}">文章归档</a>
+        <a href="{{ '/archive/' | prepend: ui.prefix | relative_url }}">{{ ui.archive_link }}</a>
         <span aria-hidden="true">/</span>
-        <span aria-current="page">文章</span>
+        <span aria-current="page">{{ ui.article_label }}</span>
       </nav>
       <p class="interior-hero__eyebrow">JOURNAL / ARTICLE</p>
-      <h1>{{ page.title | escape }}<span aria-hidden="true">.</span></h1>
+      {% assign title_end = page.title | slice: -1 %}
+      <h1>{{ page.title | escape }}{% unless title_end == '?' or title_end == '!' or title_end == '.' %}<span aria-hidden="true">.</span>{% endunless %}</h1>
       <div class="interior-article-meta">
-        <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%Y年%m月%d日' }}</time>
+        <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: ui.article_date }}</time>
         {% if page.author %}<span>{{ page.author | escape }}</span>{% endif %}
         {% for category in page.categories %}
-          <a href="{{ '/category/' | relative_url }}#{{ category | slugify }}">{{ category | escape }}</a>
+          <a href="{{ '/category/' | prepend: ui.prefix | relative_url }}#{{ category | slugify }}">{{ category | escape }}</a>
         {% endfor %}
       </div>
     </div>
@@ -29,23 +32,22 @@ layout: default
         {{ content }}
       </article>
       {% if page.tags.size > 0 %}
-        <div class="interior-article-tags" aria-label="文章标签">
-          <strong>文章标签</strong>
+        <div class="interior-article-tags" aria-label="{{ ui.article_tags }}">
+          <strong>{{ ui.article_tags }}</strong>
           {% for tag in page.tags %}
-            <a href="{{ '/tag/' | relative_url }}#{{ tag | slugify }}">#{{ tag | escape }}</a>
+            <a href="{{ '/tag/' | prepend: ui.prefix | relative_url }}#{{ tag | slugify }}">#{{ tag | escape }}</a>
           {% endfor %}
         </div>
       {% endif %}
 
       {% include previousAndNext.html %}
 
-      {% if site.related_posts.size > 0 %}
+      {% if journal_posts.size > 1 %}
         <section class="interior-related" aria-labelledby="related-title">
-          <p class="interior-overline">KEEP READING</p>
-          <h2 id="related-title">继续阅读</h2>
+          <h2 id="related-title">{{ ui.related_articles }}</h2>
           <div class="interior-related__grid">
             {% assign related_count = 0 %}
-            {% for suggestion in site.related_posts %}
+            {% for suggestion in journal_posts %}
               {% if suggestion.url != page.url and related_count < 3 %}
                 <a href="{{ suggestion.url | relative_url }}">
                   <time datetime="{{ suggestion.date | date: '%Y-%m-%d' }}">{{ suggestion.date | date: '%Y.%m.%d' }}</time>
@@ -60,24 +62,23 @@ layout: default
       {% endif %}
 
       {% if site.gitalk.enable or site.disqus_shortname or site.duoshuo_shortname %}
-        <section class="interior-comments" id="comments" aria-label="文章评论">
-          <h2>评论交流</h2>
+        <section class="interior-comments" id="comments" aria-label="{{ ui.comments }}">
+          <h2>{{ ui.comments }}</h2>
           {% include comments.html %}
         </section>
       {% endif %}
     </div>
-    <aside class="interior-aside" aria-label="文章阅读导航">
+    <aside class="interior-aside" aria-label="{{ ui.article_navigation }}">
       <div class="interior-aside__panel" data-toc-panel hidden>
-        <p class="interior-aside__eyebrow">IN THIS ARTICLE</p>
-        <h2>文章目录</h2>
-        <nav class="interior-side-nav" data-toc-list aria-label="文章目录"></nav>
+        <h2>{{ ui.article_contents }}</h2>
+        <nav class="interior-side-nav" data-toc-list aria-label="{{ ui.article_contents }}"></nav>
       </div>
       <div class="interior-aside__panel interior-aside__panel--subtle">
         <p class="interior-aside__eyebrow">BACK TO INDEX</p>
-        <h2>发现更多</h2>
+        <h2>{{ ui.article_explore }}</h2>
         <nav class="interior-side-nav">
-          <a href="{{ '/archive/' | relative_url }}">文章归档 <span aria-hidden="true">↗</span></a>
-          <a href="{{ '/tag/' | relative_url }}">标签索引 <span aria-hidden="true">↗</span></a>
+          <a href="{{ '/archive/' | prepend: ui.prefix | relative_url }}">{{ ui.archive_link }} <span aria-hidden="true">↗</span></a>
+          <a href="{{ '/tag/' | prepend: ui.prefix | relative_url }}">{{ ui.tag_link }} <span aria-hidden="true">↗</span></a>
         </nav>
       </div>
     </aside>

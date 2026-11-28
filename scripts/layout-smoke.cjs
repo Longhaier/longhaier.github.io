@@ -7,6 +7,12 @@ const {chromium} = require('playwright');
 
 const ORIGIN = 'http://127.0.0.1:8765';
 const PAGES = ['/', '/archive/', '/category/', '/tag/', '/about/', '/collection/'];
+const ENGLISH_ARTICLES = {
+  '/en/2019/03/13/java/': {original:'/2019/03/13/java/', content:'Choose a menu option.'},
+  '/en/2018/03/25/where-will-you-be-in-five-years/': {original:'/2018/03/25/paper/', content:'Working backward'},
+  '/en/2018/01/01/advice-from-ideal-island/': {original:'/2018/01/01/title/', content:'Opportunities and traps'},
+  '/en/2017/11/19/five-whys/': {original:'/2017/11/19/problem-solving(1)/', content:'Design of experiments'},
+};
 const WIDTHS = [320, 375, 390, 768, 980, 1024, 1366];
 const artifacts = path.join(process.cwd(), 'test-artifacts');
 fs.mkdirSync(artifacts, {recursive:true});
@@ -35,8 +41,10 @@ async function visit(browser, width, route, opts={}) {
   assert.equal(await page.locator('html').getAttribute('lang'), locale);
   const toggle = page.locator('.site-language');
   assert.ok(await toggle.isVisible(), 'Language switch hidden on '+route);
-  const pairedRoute = english ? route.slice(3) : '/en'+route;
-  if (english || PAGES.includes(route)) {
+  const englishArticle = ENGLISH_ARTICLES[route];
+  const translatedRoute = Object.keys(ENGLISH_ARTICLES).find(url => ENGLISH_ARTICLES[url].original === route);
+  if (english || PAGES.includes(route) || translatedRoute) {
+    const pairedRoute = englishArticle?.original || translatedRoute || (english ? route.slice(3) : '/en'+route);
     const otherLocale = english ? 'zh-CN' : 'en';
     assert.equal(await toggle.getAttribute('href'), pairedRoute);
     assert.equal(await page.locator('head link[hreflang="'+otherLocale+'"]').getAttribute('href'),
@@ -127,11 +135,43 @@ async function visit(browser, width, route, opts={}) {
     await search.fill('array manager');
     assert.equal(await english.getByRole('status').textContent(), 'Matching entries: 1');
     assert.ok(await english.getByRole('link', { name:'A Simple Array Manager in Java' }).isVisible());
-    assert.equal(await english.getByRole('link', { name:'A Simple Array Manager in Java' }).getAttribute('hreflang'), 'zh-CN');
+    assert.equal(await english.getByRole('link', { name:'A Simple Array Manager in Java' }).getAttribute('hreflang'), 'en');
     await search.fill('not-a-matching-title');
     assert.ok(await english.getByText('No articles match your search.').isVisible());
+    for (const route of ['/en/', '/en/archive/', '/en/category/', '/en/tag/']) {
+      await english.goto(ORIGIN+route);
+      const postLinks = english.locator('.home-post h3 a, .interior-preview h3 a');
+      const destinations = await postLinks.evaluateAll(links => Array.from(new Set(links.map(link => link.getAttribute('href')))).sort());
+      assert.deepEqual(destinations, Object.keys(ENGLISH_ARTICLES).sort(), 'article links at '+route);
+    }
+    await english.goto(ORIGIN+'/en/archive/');
+    await english.getByRole('link', { name:'A Simple Array Manager in Java' }).click();
+    assert.equal(new URL(english.url()).pathname, '/en/2019/03/13/java/');
+    await english.locator('.site-language').click();
+    assert.equal(new URL(english.url()).pathname, '/2019/03/13/java/');
+    await english.locator('.site-language').click();
+    assert.equal(new URL(english.url()).pathname, '/en/2019/03/13/java/');
+
+    for (const [route, entry] of Object.entries(ENGLISH_ARTICLES)) {
+      await visit(browser,375,route);
+      await english.goto(ORIGIN+route);
+      const article = english.locator('main');
+      assert.ok((await article.innerText()).includes(entry.content), 'translated body at '+route);
+      assert.doesNotMatch(await article.innerText(), /\p{Script=Han}/u, 'Chinese text inside '+route);
+      assert.ok(await article.getByRole('navigation', { name:'On this page' }).isVisible(), 'article contents at '+route);
+      const articleLinks = await article.locator('.interior-post-nav a, .interior-related a').evaluateAll(
+        links => links.map(link => link.getAttribute('href')),
+      );
+      assert.equal(articleLinks.filter(link => link in ENGLISH_ARTICLES && link !== route).length, articleLinks.length, 'reading links at '+route);
+      assert.equal(await article.locator('.interior-related a').count(), 3, 'English related articles at '+route);
+      assert.ok(await article.locator('.interior-post-nav a').count() >= 1, 'English adjacent articles at '+route);
+    }
+    const feed = await english.request.get(ORIGIN+'/en/feed.xml');
+    assert.equal(feed.status(), 200);
+    assert.match(await feed.text(), /<language>en<\/language>/);
+    assert.match(await feed.text(), /<link>https:\/\/taobuilds.github.io\/en\/2019\/03\/13\/java\/<\/link>/);
     await english.close();
-    // At least one existing post page, not only top-level Jekyll paths.
+    // Exercise the original article layout on mobile and desktop too.
     const context=await browser.newContext();
     const p=await context.newPage();
     await p.goto(ORIGIN+'/archive/',{waitUntil:'domcontentloaded'});

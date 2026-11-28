@@ -3,4 +3,5 @@ layout: null
 ---
 {% for page in site.pages %}{% unless page.url contains '.xml' %}{{ page.url | absolute_url }}
 {% endunless %}{% endfor %}{% for post in site.posts %}{{ post.url | absolute_url }}
+{% endfor %}{% for post in site.english %}{{ post.url | absolute_url }}
 {% endfor %}

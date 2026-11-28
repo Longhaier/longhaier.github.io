@@ -1,13 +1,13 @@
-{% include post-labels.html entry=include.post %}
-<article class="interior-preview" data-filter-item data-search="{{ entry.title | downcase | escape }}{% if post_title != entry.title %} {{ post_title | downcase | escape }}{% endif %} {{ entry.categories | join: ' ' | downcase | escape }} {{ entry.tags | join: ' ' | downcase | escape }}">
+{% assign entry = include.post %}
+{% assign summary = entry.description | default: entry.excerpt | strip_html | strip_newlines %}
+<article class="interior-preview" data-filter-item data-search="{{ entry.title | downcase | escape }} {{ entry.categories | join: ' ' | downcase | escape }} {{ entry.tags | join: ' ' | downcase | escape }}">
   <div class="interior-preview__meta">
     <time datetime="{{ entry.date | date: '%Y-%m-%d' }}">{{ entry.date | date: '%Y.%m.%d' }}</time>
     {% for category in entry.categories limit:2 %}
       <a class="interior-chip" href="{{ '/category/' | prepend: ui.prefix | relative_url }}#{{ category | slugify }}">{{ category | escape }}</a>
     {% endfor %}
-    {% if show_original_language %}<span class="interior-chip">{{ ui.original_language }}</span>{% endif %}
   </div>
-  <h3><a href="{{ entry.url | relative_url }}" lang="{{ post_title_lang }}" hreflang="{{ post_lang }}">{{ post_title | escape }}</a></h3>
-  {% if post_excerpt %}<p>{{ post_excerpt | truncate: 130 | escape }}</p>{% endif %}
-  <a class="interior-preview__more" href="{{ entry.url | relative_url }}" hreflang="{{ post_lang }}">{{ post_action }} <span aria-hidden="true">↗</span></a>
+  <h3><a href="{{ entry.url | relative_url }}" hreflang="{{ locale }}">{{ entry.title | escape }}</a></h3>
+  {% if summary != empty %}<p>{{ summary | truncate: 130 | escape }}</p>{% endif %}
+  <a class="interior-preview__more" href="{{ entry.url | relative_url }}" hreflang="{{ locale }}">{{ ui.read_article }} <span aria-hidden="true">↗</span></a>
 </article>

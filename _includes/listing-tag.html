@@ -1,5 +1,6 @@
 {% include locale.html %}
-{% assign tags_sorted = site.tags | sort %}
+{% include journal-posts.html %}
+{% assign tags_sorted = journal_posts | map: 'tags' | join: '|' | split: '|' | uniq | sort %}
 {% assign listing = ui.tag %}
 <main id="main-content" class="interior interior--listing">
   {% include interior-banner.html title=page.title description=page.description eyebrow="03 / TAGS" %}
@@ -19,13 +20,14 @@
       <p class="interior-filter-status" role="status" aria-live="polite" data-filter-status data-all="{{ ui.filter_all }}" data-matches="{{ ui.filter_matches }}"></p>
       <p class="interior-no-results" data-filter-empty hidden>{{ listing.no_results }}</p>
       {% for tag in tags_sorted %}
-        <section class="interior-group" id="{{ tag[0] | slugify }}" data-filter-group data-filter-group-name="{{ tag[0] | downcase | escape }}">
+        {% assign matching_posts = journal_posts | where_exp: "entry", "entry.tags contains tag" %}
+        <section class="interior-group" id="{{ tag | slugify }}" data-filter-group data-filter-group-name="{{ tag | downcase | escape }}">
           <div class="interior-group__heading">
-            <h2><span class="interior-heading-hash" aria-hidden="true">#</span>{{ tag[0] | escape }}</h2>
-            <span>{{ ui.post_count | replace: '%count%', tag[1].size }}</span>
+            <h2><span class="interior-heading-hash" aria-hidden="true">#</span>{{ tag | escape }}</h2>
+            <span>{{ ui.post_count | replace: '%count%', matching_posts.size }}</span>
           </div>
           <div class="interior-preview-list">
-            {% for post in tag[1] %}{% include post-preview.html post=post %}{% endfor %}
+            {% for post in matching_posts %}{% include post-preview.html post=post %}{% endfor %}
           </div>
         </section>
       {% endfor %}
@@ -37,7 +39,8 @@
         <h2>{{ listing.aside_title }}</h2>
         <nav class="interior-tag-cloud">
           {% for tag in tags_sorted %}
-            <a href="#{{ tag[0] | slugify }}">#{{ tag[0] | escape }} <span>{{ tag[1].size }}</span></a>
+            {% assign matching_posts = journal_posts | where_exp: "entry", "entry.tags contains tag" %}
+            <a href="#{{ tag | slugify }}">#{{ tag | escape }} <span>{{ matching_posts.size }}</span></a>
           {% endfor %}
         </nav>
         <a class="interior-aside__link" href="{{ '/category/' | prepend: ui.prefix | relative_url }}">{{ listing.related }} <span aria-hidden="true">↗</span></a>

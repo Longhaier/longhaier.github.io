@@ -1,17 +1,30 @@
-{% if page.previous or page.next %}
-<nav class="interior-post-nav" aria-label="相邻文章">
-  {% if page.previous %}
-    <a href="{{ page.previous.url | relative_url }}" class="interior-post-nav__item">
-      <span class="interior-post-nav__direction">← 上一篇</span>
-      <strong>{{ page.previous.title | escape }}</strong>
+{% assign previous_post = nil %}
+{% assign next_post = nil %}
+{% for entry in journal_posts %}
+  {% if entry.url == page.url %}
+    {% unless forloop.first %}{% assign next_post = newer_post %}{% endunless %}
+    {% unless forloop.last %}
+      {% assign previous_index = forloop.index %}
+      {% assign previous_post = journal_posts[previous_index] %}
+    {% endunless %}
+    {% break %}
+  {% endif %}
+  {% assign newer_post = entry %}
+{% endfor %}
+{% if previous_post or next_post %}
+<nav class="interior-post-nav" aria-label="{{ ui.adjacent_articles }}">
+  {% if previous_post %}
+    <a href="{{ previous_post.url | relative_url }}" class="interior-post-nav__item">
+      <span class="interior-post-nav__direction">← {{ ui.previous_article }}</span>
+      <strong>{{ previous_post.title | escape }}</strong>
     </a>
   {% else %}
     <span class="interior-post-nav__placeholder" aria-hidden="true"></span>
   {% endif %}
-  {% if page.next %}
-    <a href="{{ page.next.url | relative_url }}" class="interior-post-nav__item interior-post-nav__item--next">
-      <span class="interior-post-nav__direction">下一篇 →</span>
-      <strong>{{ page.next.title | escape }}</strong>
+  {% if next_post %}
+    <a href="{{ next_post.url | relative_url }}" class="interior-post-nav__item interior-post-nav__item--next">
+      <span class="interior-post-nav__direction">{{ ui.next_article }} →</span>
+      <strong>{{ next_post.title | escape }}</strong>
     </a>
   {% endif %}
 </nav>

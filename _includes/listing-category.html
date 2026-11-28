@@ -1,5 +1,6 @@
 {% include locale.html %}
-{% assign categories_sorted = site.categories | sort %}
+{% include journal-posts.html %}
+{% assign categories_sorted = journal_posts | map: 'categories' | join: '|' | split: '|' | uniq | sort %}
 {% assign listing = ui.category %}
 <main id="main-content" class="interior interior--listing">
   {% include interior-banner.html title=page.title description=page.description eyebrow="02 / CATEGORIES" %}
@@ -19,13 +20,14 @@
       <p class="interior-filter-status" role="status" aria-live="polite" data-filter-status data-all="{{ ui.filter_all }}" data-matches="{{ ui.filter_matches }}"></p>
       <p class="interior-no-results" data-filter-empty hidden>{{ listing.no_results }}</p>
       {% for category in categories_sorted %}
-        <section class="interior-group" id="{{ category[0] | slugify }}" data-filter-group data-filter-group-name="{{ category[0] | downcase | escape }}">
+        {% assign matching_posts = journal_posts | where_exp: "entry", "entry.categories contains category" %}
+        <section class="interior-group" id="{{ category | slugify }}" data-filter-group data-filter-group-name="{{ category | downcase | escape }}">
           <div class="interior-group__heading">
-            <h2>{{ category[0] | escape }}</h2>
-            <span>{{ ui.post_count | replace: '%count%', category[1].size }}</span>
+            <h2>{{ category | escape }}</h2>
+            <span>{{ ui.post_count | replace: '%count%', matching_posts.size }}</span>
           </div>
           <div class="interior-preview-list">
-            {% for post in category[1] %}{% include post-preview.html post=post %}{% endfor %}
+            {% for post in matching_posts %}{% include post-preview.html post=post %}{% endfor %}
           </div>
         </section>
       {% endfor %}
@@ -37,7 +39,8 @@
         <h2>{{ listing.aside_title }}</h2>
         <nav class="interior-side-nav">
           {% for category in categories_sorted %}
-            <a href="#{{ category[0] | slugify }}"><span>{{ category[0] | escape }}</span><span>{{ category[1].size }}</span></a>
+            {% assign matching_posts = journal_posts | where_exp: "entry", "entry.categories contains category" %}
+            <a href="#{{ category | slugify }}"><span>{{ category | escape }}</span><span>{{ matching_posts.size }}</span></a>
           {% endfor %}
         </nav>
         <a class="interior-aside__link" href="{{ '/archive/' | prepend: ui.prefix | relative_url }}">{{ listing.related }} <span aria-hidden="true">↗</span></a>

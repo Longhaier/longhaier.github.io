@@ -1,4 +1,5 @@
 {% include locale.html %}
+{% include journal-posts.html %}
 <main class="home" id="main-content">
   <section class="home-hero" aria-labelledby="home-title">
     <div class="home-hero__grid" aria-hidden="true"></div>
@@ -46,22 +47,24 @@
       <a class="home-text-link" href="{{ '/archive/' | prepend: ui.prefix | relative_url }}">{{ ui.home.all }} <span aria-hidden="true">↗</span></a>
     </div>
 
-    {% assign home_posts = paginator.posts | default: site.posts %}
+    {% assign home_posts = journal_posts %}
+    {% if locale == 'zh-CN' and paginator %}
+      {% assign home_posts = paginator.posts %}
+    {% endif %}
     {% if home_posts.size > 0 %}
       <div class="home-post-grid">
         {% for post in home_posts limit:6 %}
-        {% include post-labels.html entry=post %}
+        {% assign summary = post.description | default: post.excerpt | strip_html | strip_newlines %}
         <article class="home-post">
           <div class="home-post__meta">
             <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%Y.%m.%d" }}</time>
             {% if post.categories.size > 0 %}
               <span class="home-post__category">{{ post.categories | first | escape }}</span>
             {% endif %}
-            {% if show_original_language %}<span class="home-post__category">{{ ui.original_language }}</span>{% endif %}
           </div>
-          <h3><a href="{{ post.url | relative_url }}" lang="{{ post_title_lang }}" hreflang="{{ post_lang }}">{{ post_title | escape }}</a></h3>
-          {% if post_excerpt %}<p class="home-post__excerpt">{{ post_excerpt | truncate: 115 | escape }}</p>{% endif %}
-          <a class="home-post__read" href="{{ post.url | relative_url }}" hreflang="{{ post_lang }}">{{ post_action }} <span aria-hidden="true">↗</span></a>
+          <h3><a href="{{ post.url | relative_url }}" hreflang="{{ locale }}">{{ post.title | escape }}</a></h3>
+          {% if summary != empty %}<p class="home-post__excerpt">{{ summary | truncate: 115 | escape }}</p>{% endif %}
+          <a class="home-post__read" href="{{ post.url | relative_url }}" hreflang="{{ locale }}">{{ ui.read_article }} <span aria-hidden="true">↗</span></a>
         </article>
         {% endfor %}
       </div>
